@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'navbar.dart';
+import '../nav/navbar.dart';
+import '../nav/navbar_mobile.dart';
 
 class NavBarButton extends StatefulWidget {
   final Function onPressed;

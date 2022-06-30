@@ -2,27 +2,28 @@
 
 import 'package:flutter/material.dart';
 import 'package:pozadkey/views/home_view/intro/intro_tab.dart';
-import 'package:pozadkey/views/widgets/nav/navbar_desktop.dart';
-import 'navbar_mobile.dart';
 
-class NavBar extends StatefulWidget {
-  const NavBar({Key? key}) : super(key: key);
+import 'intro_desktop.dart';
+import 'intro_mobile.dart';
+
+class Intro extends StatefulWidget {
+  const Intro({Key? key}) : super(key: key);
 
   @override
-  State<NavBar> createState() => _NavBarState();
+  State<Intro> createState() => _IntroState();
 }
 
-class _NavBarState extends State<NavBar> {
+class _IntroState extends State<Intro> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return LayoutBuilder(builder: (context, constraints) {
       if (width <= 420) {
-        return NavBarMobile();
+        return IntroMobile();
       } else if (width > 421 && width <= 1199) {
-        return NavBarMobile();
+        return IntroTab();
       } else {
-        return NavBarDesktop();
+        return IntroDesktop();
       }
     });
   }

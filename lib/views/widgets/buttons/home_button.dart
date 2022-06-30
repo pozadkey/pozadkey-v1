@@ -15,7 +15,7 @@ class _HomeButtonState extends State<HomeButton> {
       fontSize: 18,
       color: Colors.white,
       letterSpacing: 0.41,
-      fontWeight: FontWeight.w600);
+      fontWeight: FontWeight.w500);
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class _HomeButtonState extends State<HomeButton> {
         ),
       ),
       onPressed: () {
-        Navigator.pushNamed(context, '/login');
+        Navigator.pushNamed(context, '/contact');
       },
       style: TextButton.styleFrom(
         backgroundColor: Color.fromARGB(235, 255, 153, 0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
       ),
     );
   }

@@ -2,47 +2,55 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class CTAButton extends StatefulWidget {
-  const CTAButton({Key? key}) : super(key: key);
+class ContactButton extends StatefulWidget {
+  const ContactButton({Key? key}) : super(key: key);
 
   @override
-  _CTAButtonState createState() => _CTAButtonState();
+  _ContactButtonState createState() => _ContactButtonState();
 }
 
-class _CTAButtonState extends State<CTAButton> {
+class _ContactButtonState extends State<ContactButton> {
   final _navButtonFont = TextStyle(
       fontStyle: FontStyle.normal,
       fontSize: 18,
       color: Color.fromARGB(235, 255, 153, 0),
       letterSpacing: 0.41,
-      fontWeight: FontWeight.w500);
+      fontWeight: FontWeight.w600);
+
+  void _launchEmail() async {
+    final url = Uri.parse('mailto:chelpoza@gmail.com?subject=Hello');
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+        padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
         child: Row(
           children: [
             Text(
-              'Projects',
+              'Send me an email',
               style: _navButtonFont,
             ),
             SizedBox(
               width: 5,
             ),
             Icon(
-              // Icons.arrow_forward_ios,
-              FontAwesomeIcons.arrowRight,
+              FontAwesomeIcons.share,
               color: Color.fromARGB(235, 255, 153, 0),
-              size: 20,
             )
           ],
         ),
       ),
       onPressed: () {
-        Navigator.pushNamed(context, '/login');
+        _launchEmail();
       },
       style: TextButton.styleFrom(
         side: BorderSide(

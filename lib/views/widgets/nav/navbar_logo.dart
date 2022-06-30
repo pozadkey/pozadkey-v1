@@ -12,10 +12,9 @@ class NavLogo extends StatefulWidget {
 class _NavLogoState extends State<NavLogo> {
   final _logoFont = TextStyle(
       fontStyle: FontStyle.normal,
-      fontSize: 20,
+      fontSize: 18,
       color: Colors.white,
-      letterSpacing: 1.5,
-      fontWeight: FontWeight.w700);
+      fontWeight: FontWeight.w600);
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +27,16 @@ class _NavLogoState extends State<NavLogo> {
               color: Colors.white,
               size: 50,
             ),
-            Image.asset(
-              'assets/images/IMG_4522.PNG',
-              fit: BoxFit.contain,
-              colorBlendMode: BlendMode.darken,
-              width: 50,
-              height: 50,
+            Positioned(
+              left: 5,
+              bottom: 6,
+              child: Image.asset(
+                'assets/images/IMG_4522.PNG',
+                height: 40,
+                width: 40,
+                fit: BoxFit.contain,
+                colorBlendMode: BlendMode.darken,
+              ),
             ),
           ],
         ),
@@ -41,7 +44,7 @@ class _NavLogoState extends State<NavLogo> {
           width: 5,
         ),
         Text(
-          'POZADKEY',
+          'POZADKEY.',
           style: _logoFont,
         ),
       ],

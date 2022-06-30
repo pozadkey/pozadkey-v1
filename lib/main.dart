@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'views/home_view/home_view_desktop.dart';
+import 'package:pozadkey/views/contact_view/contact_view.dart';
+import 'package:pozadkey/views/projects_view/projects_view.dart';
+import 'views/home_view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,9 +26,11 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'Poppins',
               ),
               title: 'Pozadkey - Software Engineer | Web & Mobile',
-              home: HomeViewDesktop(),
+              initialRoute: '/',
               routes: <String, WidgetBuilder>{
-                'home': (BuildContext context) => HomeViewDesktop(),
+                '/': (BuildContext context) => HomeView(),
+                '/projects': (BuildContext context) => ProjectsView(),
+                '/contact': (BuildContext context) => ContactView(),
               });
         });
   }

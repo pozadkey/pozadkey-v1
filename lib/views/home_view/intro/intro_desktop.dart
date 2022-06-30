@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:pozadkey/views/widgets/buttons/cta_button.dart';
 import 'package:pozadkey/views/widgets/buttons/home_button.dart';
-import 'package:pozadkey/views/widgets/navbar_logo.dart';
+import 'package:pozadkey/views/widgets/nav/navbar_logo.dart';
 
 class IntroDesktop extends StatefulWidget {
   const IntroDesktop({Key? key}) : super(key: key);
@@ -15,28 +15,28 @@ class IntroDesktop extends StatefulWidget {
 class _IntroDesktopState extends State<IntroDesktop> {
   final _nameFont = TextStyle(
       fontStyle: FontStyle.normal,
-      fontSize: 40,
+      fontSize: 20,
       color: Colors.white,
       fontWeight: FontWeight.w700);
 
   final _introFont = TextStyle(
       fontStyle: FontStyle.normal,
-      fontSize: 18,
-      color: Colors.white,
+      fontSize: 14,
+      color: Colors.grey[350],
       fontWeight: FontWeight.w400);
 
   final _boxedFont = TextStyle(
       fontStyle: FontStyle.normal,
-      fontSize: 16,
+      fontSize: 8,
       color: Colors.white,
       letterSpacing: 0.41,
-      fontWeight: FontWeight.w600);
+      fontWeight: FontWeight.w500);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(100, 0, 100, 0),
-      height: 700,
+      padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
+      height: 750,
       color: Color.fromARGB(255, 5, 3, 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -47,7 +47,7 @@ class _IntroDesktopState extends State<IntroDesktop> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: 600,
+                width: 550,
                 child: FittedBox(
                   child: Row(
                     children: [
@@ -56,29 +56,26 @@ class _IntroDesktopState extends State<IntroDesktop> {
                         style: _nameFont,
                       ),
                       SizedBox(
-                        width: 10,
+                        width: 3,
                       ),
                       Text(
                         'I am',
                         style: _nameFont,
                       ),
                       SizedBox(
-                        width: 20,
+                        width: 5,
                       ),
-                      TextButton(
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          child: Text(
-                            'Web & Mobile Engineer',
-                            style: _boxedFont,
-                          ),
-                        ),
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          //backgroundColor: Color.fromARGB(238, 51, 71, 221),
-                          backgroundColor: Color.fromARGB(237, 104, 12, 216),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40.0)),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(237, 104, 12, 216),
+                            border: Border.all(
+                              color: Color.fromARGB(237, 104, 12, 216),
+                            ),
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Text(
+                          'Web & Mobile Engineer',
+                          style: _boxedFont,
                         ),
                       )
                     ],
@@ -86,7 +83,7 @@ class _IntroDesktopState extends State<IntroDesktop> {
                 ),
               ),
               SizedBox(
-                width: 600,
+                width: 550,
                 child: FittedBox(
                   child: Text(
                     'Damilare Ajakaiye',
@@ -98,7 +95,7 @@ class _IntroDesktopState extends State<IntroDesktop> {
                 height: 20,
               ),
               SizedBox(
-                width: 600,
+                width: 550,
                 child: FittedBox(
                   child: Text(
                     'I have a passion for turning ideas into products suitable for\nend-users. I am currently exploring and building on the\ndecentralized web.',
@@ -110,7 +107,7 @@ class _IntroDesktopState extends State<IntroDesktop> {
                 height: 50,
               ),
               SizedBox(
-                width: 400,
+                width: 350,
                 child: FittedBox(
                   child: Row(
                     children: [
@@ -131,39 +128,49 @@ class _IntroDesktopState extends State<IntroDesktop> {
           Expanded(
               child: Container(
             color: Color.fromARGB(255, 7, 3, 18),
-            child: Center(
-                child: Stack(
-              children: [
-                Positioned(
-                  top: 300,
-                  child: Icon(
-                    Icons.circle,
-                    color: Color.fromARGB(237, 104, 12, 216),
-                    size: 50,
+            padding: EdgeInsets.all(60),
+            width: 300,
+            child: FittedBox(
+              child: Center(
+                  child: Stack(
+                children: [
+                  Positioned(
+                    top: 300,
+                    bottom: 20,
+                    child: Icon(
+                      Icons.circle,
+                      color: Color.fromARGB(237, 104, 12, 216),
+                      size: 70,
+                    ),
                   ),
-                ),
-                Positioned(
-                  left: 300,
-                  child: Icon(
-                    Icons.circle,
-                    color: Color.fromARGB(235, 255, 153, 0),
-                    size: 50,
+                  Positioned(
+                    left: 410,
+                    top: 50,
+                    child: Icon(
+                      Icons.circle,
+                      color: Color.fromARGB(235, 255, 153, 0),
+                      size: 70,
+                    ),
                   ),
-                ),
-                Icon(
-                  Icons.circle,
-                  color: Colors.white,
-                  size: 400,
-                ),
-                Image.asset(
-                  'assets/images/IMG_4522.PNG',
-                  height: 400,
-                  width: 400,
-                  fit: BoxFit.contain,
-                  colorBlendMode: BlendMode.darken,
-                )
-              ],
-            )),
+                  Icon(
+                    Icons.circle,
+                    color: Colors.white,
+                    size: 500,
+                  ),
+                  Positioned(
+                    left: 50,
+                    top: 40,
+                    child: Image.asset(
+                      'assets/images/IMG_4522.PNG',
+                      height: 400,
+                      width: 400,
+                      fit: BoxFit.contain,
+                      colorBlendMode: BlendMode.darken,
+                    ),
+                  )
+                ],
+              )),
+            ),
           ))
         ],
       ),
