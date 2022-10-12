@@ -2,9 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../../widgets/buttons/cta_button.dart';
-import '../../widgets/buttons/home_button.dart';
-
 class IntroMobile extends StatefulWidget {
   const IntroMobile({Key? key}) : super(key: key);
 
@@ -35,10 +32,12 @@ class _IntroMobileState extends State<IntroMobile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
+      padding: EdgeInsets.fromLTRB(30, 80, 30, 80),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
+          Container(
+            padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
             width: 230,
             child: FittedBox(
               child: Stack(
@@ -140,16 +139,16 @@ class _IntroMobileState extends State<IntroMobile> {
           SizedBox(
             height: 40,
           ),
-          SizedBox(
+          Container(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             width: 250,
             child: FittedBox(
               child: Row(
                 children: [
-                  HomeButton(),
                   SizedBox(
                     width: 10,
                   ),
-                  CTAButton(),
+            
                 ],
               ),
             ),

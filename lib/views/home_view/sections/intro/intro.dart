@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pozadkey/views/home_view/intro/intro_tab.dart';
-
 import 'intro_desktop.dart';
 import 'intro_mobile.dart';
 
@@ -21,7 +19,7 @@ class _IntroState extends State<Intro> {
       if (width <= 420) {
         return IntroMobile();
       } else if (width > 421 && width <= 1199) {
-        return IntroTab();
+        return IntroDesktop();
       } else {
         return IntroDesktop();
       }

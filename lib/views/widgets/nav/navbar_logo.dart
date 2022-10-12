@@ -1,53 +1,44 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NavLogo extends StatefulWidget {
-  const NavLogo({Key? key}) : super(key: key);
+  final Color myColor;
+  double iconsSize;
+  double logoTextSize;
+
+  NavLogo(
+      {Key? key,
+      required this.myColor,
+      required this.iconsSize,
+      required this.logoTextSize})
+      : super(key: key);
 
   @override
   State<NavLogo> createState() => _NavLogoState();
 }
 
 class _NavLogoState extends State<NavLogo> {
-  final _logoFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 18,
-      color: Colors.white,
-      fontWeight: FontWeight.w600);
-
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Stack(
-          children: [
-            Icon(
-              Icons.circle,
-              color: Colors.white,
-              size: 50,
-            ),
-            Positioned(
-              left: 5,
-              bottom: 6,
-              child: Image.asset(
-                'assets/images/IMG_4522.PNG',
-                height: 40,
-                width: 40,
-                fit: BoxFit.contain,
-                colorBlendMode: BlendMode.darken,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          width: 5,
-        ),
-        Text(
-          'POZADKEY.',
-          style: _logoFont,
-        ),
-      ],
+    final _logoFont = TextStyle(
+        fontStyle: FontStyle.normal,
+        fontSize: widget.logoTextSize,
+        letterSpacing: 1,
+        color: widget.myColor,
+        fontWeight: FontWeight.w500);
+
+    return MaterialButton(
+      padding: EdgeInsets.zero,
+      minWidth: 0,
+      onPressed: () {
+        Navigator.pushNamed(context, '/');
+      },
+      child: Text(
+        'POZADKEY',
+        style: _logoFont,
+      ),
     );
   }
 }

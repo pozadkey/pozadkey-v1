@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pozadkey/views/contact_view/contact_view.dart';
-import 'package:pozadkey/views/projects_view/projects_view.dart';
 import 'views/home_view/home_view.dart';
 
 void main() {
@@ -29,8 +27,9 @@ class MyApp extends StatelessWidget {
               initialRoute: '/',
               routes: <String, WidgetBuilder>{
                 '/': (BuildContext context) => HomeView(),
-                '/projects': (BuildContext context) => ProjectsView(),
-                '/contact': (BuildContext context) => ContactView(),
+                '/projects': (BuildContext context) => HomeView(),
+                '/about': (BuildContext context) => HomeView(),
+                '/contact': (BuildContext context) => HomeView(),
               });
         });
   }

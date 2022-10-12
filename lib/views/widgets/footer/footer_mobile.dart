@@ -16,10 +16,9 @@ class _FooterMobileState extends State<FooterMobile> {
   final _footerFont = TextStyle(
       fontStyle: FontStyle.normal,
       fontSize: 14,
-      // color: Color.fromARGB(241, 3, 26, 199),
       letterSpacing: 0.41,
-      color: Colors.white,
-      fontWeight: FontWeight.w400);
+      color: Colors.grey[350],
+      fontWeight: FontWeight.w600);
 
   void _launchGithub() async {
     final url = Uri.parse('https://github.com/pozadkey');
@@ -55,10 +54,10 @@ class _FooterMobileState extends State<FooterMobile> {
     String formattedDate = DateFormat('y').format(now);
 
     return Container(
-      padding: EdgeInsets.fromLTRB(100, 0, 100, 0),
-      color: Color.fromARGB(255, 5, 3, 12),
-      height: 140,
-      width: 500,
+      padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
+      alignment: Alignment.bottomCenter,
+      height: 100,
+      width: 600,
       child: FittedBox(
         child: Column(
           children: [
