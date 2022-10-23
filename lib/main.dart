@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'views/home_view/home_view.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                fontFamily: 'Poppins',
+                fontFamily: 'Gordita',
               ),
               title: 'Pozadkey - Software Engineer | Web & Mobile',
               initialRoute: '/',

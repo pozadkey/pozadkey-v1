@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 
-class SelectButton extends StatefulWidget {
-  IconData icon;
+class PrimaryIconButton extends StatefulWidget {
+  final String title;
+
   Color initalTextColor;
   Color initialBgColor;
   Color hoverInColor;
@@ -12,9 +13,9 @@ class SelectButton extends StatefulWidget {
   Color hoverOutBgColor;
   final Function onPressed;
 
-  SelectButton(
+  PrimaryIconButton(
       {Key? key,
-      required this.icon,
+      required this.title,
       required this.initalTextColor,
       required this.initialBgColor,
       required this.hoverInColor,
@@ -25,13 +26,19 @@ class SelectButton extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<SelectButton> createState() => _SelectButtonState();
+  State<PrimaryIconButton> createState() => _PrimaryIconButtonState();
 }
 
-class _SelectButtonState extends State<SelectButton> {
+class _PrimaryIconButtonState extends State<PrimaryIconButton> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+
+    final _buttonFont = TextStyle(
+        fontSize: 13,
+        color: widget.initalTextColor,
+        letterSpacing: 1.5,
+        fontWeight: FontWeight.w600);
 
     return MouseRegion(
       onEnter: (m) {
@@ -48,9 +55,19 @@ class _SelectButtonState extends State<SelectButton> {
       },
       child: TextButton(
         child: Padding(
-          padding: width >= 800 ? EdgeInsets.all(10) : EdgeInsets.all(10),
-          child: Icon(widget.icon,
-              color: widget.initalTextColor, size: width >= 800 ? 20 : 15),
+          padding: width >= 800 ? EdgeInsets.all(10) : EdgeInsets.all(6),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                widget.title.toUpperCase(),
+                style: _buttonFont,
+              ),
+              SizedBox(
+                width: 7,
+              ),
+            ],
+          ),
         ),
         onPressed: () {
           widget.onPressed();
@@ -58,7 +75,9 @@ class _SelectButtonState extends State<SelectButton> {
         style: TextButton.styleFrom(
           backgroundColor: widget.initialBgColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(2.0),
+            borderRadius: BorderRadius.circular(
+              25.0,
+            ),
           ),
         ),
       ),

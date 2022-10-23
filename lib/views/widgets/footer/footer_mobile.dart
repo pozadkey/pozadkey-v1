@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../nav/navbar_items.dart';
 
 class FooterMobile extends StatefulWidget {
   const FooterMobile({Key? key}) : super(key: key);
@@ -13,12 +14,6 @@ class FooterMobile extends StatefulWidget {
 }
 
 class _FooterMobileState extends State<FooterMobile> {
-  final _footerFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 14,
-      letterSpacing: 0.41,
-      color: Colors.grey[350],
-      fontWeight: FontWeight.w600);
 
   void _launchGithub() async {
     final url = Uri.parse('https://github.com/pozadkey');
@@ -56,55 +51,61 @@ class _FooterMobileState extends State<FooterMobile> {
     return Container(
       padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
       alignment: Alignment.bottomCenter,
-      height: 100,
       width: 600,
-      child: FittedBox(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          FittedBox(
+            child: Row(
               children: [
-                MaterialButton(
-                  onPressed: _launchGithub,
-                  child: Icon(
-                    FontAwesomeIcons.github,
-                    color: Colors.white,
-                    size: 18,
-                  ),
-                ),
+                NavBarItems(
+                    onPressed: _launchGithub,
+                    title: 'Github',
+                    initialColor: Colors.white,
+                    hoverColorIn: Color.fromARGB(247, 252, 118, 8),
+                    hoverColorOut: Colors.white),
                 SizedBox(
-                  width: 5,
+                  width: 10,
                 ),
-                MaterialButton(
-                  onPressed: _launchLinkedIn,
-                  child: Icon(
-                    FontAwesomeIcons.linkedinIn,
-                    color: Colors.white,
-                    size: 18,
-                  ),
-                ),
+                NavBarItems(
+                    onPressed: _launchLinkedIn,
+                    title: 'LinkedIn',
+                    initialColor: Colors.white,
+                    hoverColorIn: Color.fromARGB(247, 252, 118, 8),
+                    hoverColorOut: Colors.white),
                 SizedBox(
-                  width: 5,
+                  width: 10,
                 ),
-                MaterialButton(
-                  onPressed: _launchTwitter,
-                  child: Icon(
-                    FontAwesomeIcons.twitter,
-                    color: Colors.white,
-                    size: 18,
-                  ),
-                ),
+                NavBarItems(
+                    onPressed: _launchTwitter,
+                    title: 'Twitter',
+                    initialColor: Colors.white,
+                    hoverColorIn: Color.fromARGB(247, 252, 118, 8),
+                    hoverColorOut: Colors.white),
               ],
             ),
-            SizedBox(
-              height: 40,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          FittedBox(
+            child: SizedBox(
+              child: Row(
+                children: [
+                  NavBarItems(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/');
+                      },
+                      title: '© $formattedDate. Damilare Ajakaiye.',
+                      initialColor: Colors.white,
+                      hoverColorIn: Color.fromARGB(247, 252, 118, 8),
+                      hoverColorOut: Colors.white),
+                ],
+              ),
             ),
-            Text(
-              '© Pozadkey $formattedDate. All Rights Reserved.',
-              style: _footerFont,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

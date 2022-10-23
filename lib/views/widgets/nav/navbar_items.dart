@@ -28,7 +28,7 @@ class _NavBarItemsState extends State<NavBarItems> {
     final _navFont = TextStyle(
         fontStyle: FontStyle.normal,
         fontSize: 14,
-        letterSpacing: 0.41,
+        letterSpacing: 0.5,
         color: widget.initialColor,
         fontWeight: FontWeight.w500);
 
@@ -44,6 +44,8 @@ class _NavBarItemsState extends State<NavBarItems> {
           });
         },
         child: MaterialButton(
+          padding: EdgeInsets.zero,
+          minWidth: 0,
           onPressed: () {
             widget.onPressed();
           },

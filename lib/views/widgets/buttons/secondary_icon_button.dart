@@ -1,12 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, must_be_immutable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, must_be_immutable, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SecondaryIconButton extends StatefulWidget {
-  
   final String title;
-  IconData icon;
+
   Color bgColor;
   Color bgColorOut;
   Color titleColor;
@@ -17,7 +16,6 @@ class SecondaryIconButton extends StatefulWidget {
   SecondaryIconButton(
       {Key? key,
       required this.title,
-      required this.icon,
       required this.bgColor,
       required this.bgColorOut,
       required this.titleColor,
@@ -36,11 +34,11 @@ class _SecondaryIconButtonState extends State<SecondaryIconButton> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    final _secondaryIconButtonFont = TextStyle(
-        fontStyle: FontStyle.normal,
-        fontSize: 16,
+    final _buttonFont = TextStyle(
+        fontSize: 13,
         color: widget.titleColor,
-        fontWeight: FontWeight.w500);
+        letterSpacing: 1.5,
+        fontWeight: FontWeight.w600);
 
     return MouseRegion(
       onEnter: (m) {
@@ -63,31 +61,23 @@ class _SecondaryIconButtonState extends State<SecondaryIconButton> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                widget.title,
-                style: _secondaryIconButtonFont,
+                widget.title.toUpperCase(),
+                style: _buttonFont,
               ),
               SizedBox(
                 width: 10,
               ),
-              Icon(
-              widget.icon,
-                color: widget.titleColor,
-              )
             ],
           ),
         ),
         onPressed: () {
-          setState(() {
-            widget.bgColor = widget.myColor;
-            widget.titleColor = widget.titleColorIn;
-          });
           widget.onPressed();
         },
         style: TextButton.styleFrom(
           backgroundColor: widget.bgColor,
           side: BorderSide(color: widget.myColor, width: 2),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.0)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
         ),
       ),
     );

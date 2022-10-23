@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../buttons/primary_button.dart';
+import '../buttons/primary_icon_button.dart';
 import 'navbar_items.dart';
 import 'navbar_logo.dart';
 
@@ -37,65 +38,73 @@ class _NavBarDesktopState extends State<NavBarDesktop> {
     double width = MediaQuery.of(context).size.width;
 
     return Container(
-      color: Color.fromARGB(255, 9, 9, 9),
+      color: Colors.black,
       width: double.infinity,
       child: Column(
         children: [
           Container(
             padding: width <= 1550
-                ? EdgeInsets.fromLTRB(50, 15, 50, 15)
-                : EdgeInsets.fromLTRB(200, 15, 200, 15),
+                ? EdgeInsets.fromLTRB(50, 20, 50, 20)
+                : EdgeInsets.fromLTRB(200, 20, 200, 20),
             width: 2000,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 NavLogo(
-                  myColor: Color.fromARGB(247, 252, 118, 8),
-                  logoTextSize: 20,
-                  iconsSize: 20,
+                  myColor: Colors.white,
+                  logoTextSize: 18,
+                  iconsSize: 18,
                 ),
-                Row(children: [
-                  NavBarItems(
-                      onPressed: () => Scrollable.ensureVisible(
-                          widget.homeKey.currentContext!,
-                          alignment: 1,
-                          duration: Duration(seconds: 1),
-                          curve: Curves.ease),
-                      title: 'Home',
-                      initialColor: Colors.white,
-                      hoverColorIn: Color.fromARGB(247, 252, 118, 8),
-                      hoverColorOut: Colors.white),
-                  NavBarItems(
-                      onPressed: () => Scrollable.ensureVisible(
-                          widget.aboutKey.currentContext!,
-                          alignment: 1,
-                          duration: Duration(seconds: 1),
-                          curve: Curves.ease),
-                      title: 'About',
-                      initialColor: Colors.white,
-                      hoverColorIn: Color.fromARGB(247, 252, 118, 8),
-                      hoverColorOut: Colors.white),
-                  NavBarItems(
-                      onPressed: () => Scrollable.ensureVisible(
-                          widget.projectsKey.currentContext!,
-                          alignment: 1,
-                          duration: Duration(seconds: 1),
-                          curve: Curves.ease),
-                      title: 'Projects',
-                      initialColor: Colors.white,
-                      hoverColorIn: Color.fromARGB(247, 252, 118, 8),
-                      hoverColorOut: Colors.white),
-                ]),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    PrimaryButton(
-                      title: 'Hire Me',
-                      initalTextColor: Colors.white,
-                      initialBgColor: Color.fromARGB(247, 252, 118, 8),
+                    NavBarItems(
+                        onPressed: () => Scrollable.ensureVisible(
+                            widget.homeKey.currentContext!,
+                            alignment: 1,
+                            duration: Duration(seconds: 1),
+                            curve: Curves.ease),
+                        title: 'Home',
+                        initialColor: Colors.white,
+                        hoverColorIn: Color.fromARGB(255, 213, 252, 121),
+                        hoverColorOut: Colors.white),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    NavBarItems(
+                        onPressed: () => Scrollable.ensureVisible(
+                            widget.aboutKey.currentContext!,
+                            alignment: 1,
+                            duration: Duration(seconds: 1),
+                            curve: Curves.ease),
+                        title: 'About',
+                        initialColor: Colors.white,
+                        hoverColorIn: Color.fromARGB(255, 213, 252, 121),
+                        hoverColorOut: Colors.white),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    NavBarItems(
+                        onPressed: () => Scrollable.ensureVisible(
+                            widget.projectsKey.currentContext!,
+                            alignment: 1,
+                            duration: Duration(seconds: 1),
+                            curve: Curves.ease),
+                        title: 'Work',
+                        initialColor: Colors.white,
+                        hoverColorIn: Color.fromARGB(255, 213, 252, 121),
+                        hoverColorOut: Colors.white),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    PrimaryIconButton(
+                      title: 'Chat With Me',
+                      initalTextColor: Colors.black,
+                      initialBgColor: Colors.white,
                       hoverInColor: Colors.black,
-                      hoverInBgColor: Colors.white,
-                      hoverOutColor: Colors.white,
-                      hoverOutBgColor: Color.fromARGB(247, 252, 118, 8),
+                      hoverInBgColor: Color.fromARGB(255, 213, 252, 121),
+                      hoverOutColor: Colors.black,
+                      hoverOutBgColor: Colors.white,
                       onPressed: _launchEmail,
                     ),
                   ],

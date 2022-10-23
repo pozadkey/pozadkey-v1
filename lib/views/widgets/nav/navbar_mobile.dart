@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import '../buttons/primary_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../buttons/navbar_button.dart';
+import '../buttons/primary_icon_button.dart';
+import '../buttons/secondary_icon_button.dart';
 import 'navbar_items.dart';
 import 'navbar_logo.dart';
 
@@ -10,10 +12,34 @@ IconData myMenu = Icons.menu_rounded;
 double collapsableHeight = 0.0;
 
 class NavBarMobile extends StatefulWidget {
-  const NavBarMobile({Key? key}) : super(key: key);
+  var homeKey = GlobalKey();
+  var aboutKey = GlobalKey();
+  var projectsKey = GlobalKey();
+
+  NavBarMobile({
+    Key? key,
+    required this.homeKey,
+    required this.aboutKey,
+    required this.projectsKey,
+  }) : super(key: key);
 
   @override
   State<NavBarMobile> createState() => _NavBarMobileState();
+}
+
+void _launchEmail() async {
+  final url = Uri.parse('mailto:hello@pozadkey.com?subject=Hello');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+void resumeLink() {
+  final url = Uri.parse(
+      'https://docs.google.com/document/d/1BYRWahLz8h9vvaDhzJEOKYsEBFVTO144_VZGHr-j-BA/edit?usp=sharing');
+  launchUrl(url);
 }
 
 class _NavBarMobileState extends State<NavBarMobile> {
@@ -25,7 +51,7 @@ class _NavBarMobileState extends State<NavBarMobile> {
     return Column(
       children: [
         Container(
-          color: Color.fromARGB(251, 79, 17, 94),
+          color: Colors.black,
           alignment: Alignment.center,
           padding: width <= 420
               ? EdgeInsets.fromLTRB(10, 15, 10, 15)
@@ -34,7 +60,7 @@ class _NavBarMobileState extends State<NavBarMobile> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NavLogo(
-                myColor: Color.fromARGB(255, 255, 215, 39),
+                myColor: Colors.white,
                 logoTextSize: width <= 340 ? 15 : 18,
                 iconsSize: width <= 340 ? 15 : 18,
               ),
@@ -55,7 +81,7 @@ class _NavBarMobileState extends State<NavBarMobile> {
                 },
                 hamburgerColor: _isVisible == false
                     ? Colors.white
-                    : Color.fromARGB(255, 255, 215, 39),
+                    : Color.fromARGB(255, 213, 252, 121),
               )
             ],
           ),
@@ -63,96 +89,127 @@ class _NavBarMobileState extends State<NavBarMobile> {
         Visibility(
             visible: _isVisible,
             child: AnimatedContainer(
-              color: Color.fromARGB(251, 79, 17, 94),
+              color: Color.fromARGB(255, 3, 3, 3),
               padding: width <= 420
-                  ? EdgeInsets.fromLTRB(20, 50, 20, 50)
+                  ? EdgeInsets.fromLTRB(20, 20, 20, 20)
                   : EdgeInsets.only(
-                      top: 50.0,
-                      bottom: 50.0,
+                      top: 30.0,
+                      bottom: 30.0,
                     ),
               duration: Duration(milliseconds: 375),
               curve: Curves.easeInOut,
               width: double.infinity,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  NavBarItems(
-                      onPressed: () {
-                        setState(() {
-                          _isVisible = false;
-                          myMenu = FontAwesomeIcons.bars;
-                        });
-                        Navigator.pushNamed(context, '/');
-                      },
-                      title: 'Home',
-                      initialColor: Colors.white,
-                      hoverColorIn: Color.fromARGB(255, 255, 215, 39),
-                      hoverColorOut: Colors.white),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  NavBarItems(
-                      onPressed: () {
-                        setState(() {
-                          _isVisible = false;
-                          myMenu = FontAwesomeIcons.bars;
-                        });
-                        Navigator.pushNamed(context, '/services');
-                      },
-                      title: 'Services',
-                      initialColor: Colors.white,
-                      hoverColorIn: Color.fromARGB(255, 255, 215, 39),
-                      hoverColorOut: Colors.white),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  NavBarItems(
-                      onPressed: () {
-                        setState(() {
-                          _isVisible = false;
-                          myMenu = FontAwesomeIcons.bars;
-                        });
-                        Navigator.pushNamed(context, '/projects');
-                      },
-                      title: 'Projects',
-                      initialColor: Colors.white,
-                      hoverColorIn: Color.fromARGB(255, 255, 215, 39),
-                      hoverColorOut: Colors.white),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  NavBarItems(
-                      onPressed: () {
-                        setState(() {
-                          _isVisible = false;
-                          myMenu = FontAwesomeIcons.bars;
-                        });
-                        Navigator.pushNamed(context, '/about');
-                      },
-                      title: 'About',
-                      initialColor: Colors.white,
-                      hoverColorIn: Color.fromARGB(255, 255, 215, 39),
-                      hoverColorOut: Colors.white),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  SizedBox(
-                      width: width <= 420 ? double.infinity : 300,
-                      child: PrimaryButton(
-                        title: 'Contact Us',
-                        initalTextColor: Color.fromARGB(251, 79, 17, 94),
-                        initialBgColor: Color.fromARGB(255, 255, 215, 39),
-                        hoverInColor: Colors.white,
-                        hoverInBgColor: Colors.black,
-                        hoverOutColor: Color.fromARGB(251, 79, 17, 94),
-                        hoverOutBgColor: Color.fromARGB(255, 255, 215, 39),
-                        onPressed: () {
-                          setState(() {
-                            _isVisible = false;
-                            myMenu = FontAwesomeIcons.bars;
-                          });
-                          Navigator.pushNamed(context, '/contact');
-                        },
+                  Container(
+                      padding: width <= 420
+                          ? EdgeInsets.fromLTRB(10, 15, 10, 15)
+                          : EdgeInsets.fromLTRB(20, 15, 20, 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          NavBarItems(
+                              onPressed: () {
+                                setState(() {
+                                  _isVisible = false;
+                                  myMenu = FontAwesomeIcons.bars;
+                                });
+                                Scrollable.ensureVisible(
+                                    widget.homeKey.currentContext!,
+                                    alignment: 1,
+                                    duration: Duration(seconds: 1),
+                                    curve: Curves.ease);
+                              },
+                              title: 'Home',
+                              initialColor: Colors.white,
+                              hoverColorIn: Color.fromARGB(255, 213, 252, 121),
+                              hoverColorOut: Colors.white),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          NavBarItems(
+                              onPressed: () {
+                                setState(() {
+                                  _isVisible = false;
+                                  myMenu = FontAwesomeIcons.bars;
+                                });
+                                Scrollable.ensureVisible(
+                                    widget.aboutKey.currentContext!,
+                                    alignment: 1,
+                                    duration: Duration(seconds: 1),
+                                    curve: Curves.ease);
+                              },
+                              title: 'About',
+                              initialColor: Colors.white,
+                              hoverColorIn: Color.fromARGB(255, 213, 252, 121),
+                              hoverColorOut: Colors.white),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          NavBarItems(
+                              onPressed: () {
+                                setState(() {
+                                  _isVisible = false;
+                                  myMenu = FontAwesomeIcons.bars;
+                                });
+                                Scrollable.ensureVisible(
+                                    widget.projectsKey.currentContext!,
+                                    alignment: 1,
+                                    duration: Duration(seconds: 1),
+                                    curve: Curves.ease);
+                              },
+                              title: 'Projects',
+                              initialColor: Colors.white,
+                              hoverColorIn: Color.fromARGB(255, 213, 252, 121),
+                              hoverColorOut: Colors.white),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          SizedBox(
+                              width: width <= 420 ? 200 : 300,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SecondaryIconButton(
+                                      title: 'View My Résumé',
+                                      bgColor: Colors.transparent,
+                                      bgColorOut: Colors.transparent,
+                                      titleColor: Colors.white,
+                                      titleColorIn: Colors.black,
+                                      titleColorOut: Colors.white,
+                                      myColor: Colors.white,
+                                      onPressed: resumeLink),
+                                ],
+                              )),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          SizedBox(
+                              width: width <= 420 ? 200 : 300,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  PrimaryIconButton(
+                                    title: 'Chat With Me',
+                                    initalTextColor: Colors.black,
+                                    initialBgColor: Colors.white,
+                                    hoverInColor: Colors.white,
+                                    hoverInBgColor:
+                                        Color.fromARGB(255, 213, 252, 121),
+                                    hoverOutColor: Colors.black,
+                                    hoverOutBgColor: Colors.white,
+                                    onPressed: () {
+                                      setState(() {
+                                        _isVisible = false;
+                                        myMenu = FontAwesomeIcons.bars;
+                                      });
+                                      _launchEmail;
+                                    },
+                                  ),
+                                ],
+                              ))
+                        ],
                       ))
                 ],
               ),

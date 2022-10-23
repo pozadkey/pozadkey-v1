@@ -1,11 +1,12 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'intro_desktop.dart';
 import 'intro_mobile.dart';
 
 class Intro extends StatefulWidget {
-  const Intro({Key? key}) : super(key: key);
+  var projectsKey = GlobalKey();
+  Intro({Key? key, required this.projectsKey}) : super(key: key);
 
   @override
   State<Intro> createState() => _IntroState();
@@ -16,12 +17,14 @@ class _IntroState extends State<Intro> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return LayoutBuilder(builder: (context, constraints) {
-      if (width <= 420) {
-        return IntroMobile();
-      } else if (width > 421 && width <= 1199) {
-        return IntroDesktop();
+      if (width <= 1243) {
+        return IntroMobile(
+          projectsKey: widget.projectsKey,
+        );
       } else {
-        return IntroDesktop();
+        return IntroDesktop(
+          projectsKey: widget.projectsKey,
+        );
       }
     });
   }

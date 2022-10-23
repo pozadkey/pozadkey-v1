@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SecondaryLargeButton extends StatefulWidget {
- final String title;
+  final String title;
   Color bgColor;
   Color bgColorOut;
   Color titleColor;
@@ -14,7 +14,7 @@ class SecondaryLargeButton extends StatefulWidget {
   final Function onPressed;
   SecondaryLargeButton(
       {Key? key,
-       required this.title,
+      required this.title,
       required this.bgColor,
       required this.bgColorOut,
       required this.titleColor,
@@ -33,11 +33,11 @@ class _SecondaryLargeButtonState extends State<SecondaryLargeButton> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    final _secondaryButtonFont = TextStyle(
-        fontStyle: FontStyle.normal,
-        fontSize: 12,
+    final _buttonFont = TextStyle(
+        fontSize: 13,
         color: widget.titleColor,
-        fontWeight: FontWeight.w500);
+        letterSpacing: 1.5,
+        fontWeight: FontWeight.w600);
 
     return MouseRegion(
       onEnter: (m) {
@@ -48,13 +48,13 @@ class _SecondaryLargeButtonState extends State<SecondaryLargeButton> {
       },
       onExit: (m) {
         setState(() {
-         widget.bgColor = widget.bgColorOut;
+          widget.bgColor = widget.bgColorOut;
           widget.titleColor = widget.titleColorOut;
         });
       },
       child: TextButton(
         child: Padding(
-          padding: width >= 800 ? EdgeInsets.all(4) : EdgeInsets.all(2),
+          padding: width >= 800 ? EdgeInsets.all(8) : EdgeInsets.all(6),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,23 +62,19 @@ class _SecondaryLargeButtonState extends State<SecondaryLargeButton> {
               Icon(
                 FontAwesomeIcons.solidMessage,
                 color: widget.titleColor,
-                size: 15,
+                size: 20,
               ),
               SizedBox(
                 width: 10,
               ),
               Text(
-                widget.title,
-                style: _secondaryButtonFont,
+                widget.title.toUpperCase(),
+                style: _buttonFont,
               ),
             ],
           ),
         ),
         onPressed: () {
-          setState(() {
-            widget.bgColor = widget.myColor;
-            widget.titleColor = widget.titleColorIn;
-          });
           widget.onPressed();
         },
         style: TextButton.styleFrom(
@@ -87,7 +83,7 @@ class _SecondaryLargeButtonState extends State<SecondaryLargeButton> {
             color: widget.myColor,
           ),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
         ),
       ),
     );

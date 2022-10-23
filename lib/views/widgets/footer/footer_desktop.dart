@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_field
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
 
@@ -55,7 +54,8 @@ class _FooterDesktopState extends State<FooterDesktop> {
     String formattedDate = DateFormat('y').format(now);
 
     return Container(
-      padding: EdgeInsets.fromLTRB(200, 15, 200, 15),
+      width: 2000,
+      padding: EdgeInsets.fromLTRB(200, 20, 200, 20),
       color: Colors.black,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,29 +64,35 @@ class _FooterDesktopState extends State<FooterDesktop> {
               onPressed: () {
                 Navigator.pushNamed(context, '/');
               },
-              title: '© Pozadkey $formattedDate. All Rights Reserved.',
-              initialColor: Color.fromARGB(255, 214, 214, 214),
-              hoverColorIn: Color.fromARGB(247, 252, 118, 8),
+              title: '© $formattedDate. Damilare Ajakaiye.',
+              initialColor: Colors.white,
+              hoverColorIn: Color.fromARGB(255, 213, 252, 121),
               hoverColorOut: Color.fromARGB(255, 214, 214, 214)),
           Row(
             children: [
               NavBarItems(
                   onPressed: _launchGithub,
                   title: 'Github',
-                  initialColor: Color.fromARGB(255, 214, 214, 214),
-                  hoverColorIn: Color.fromARGB(247, 252, 118, 8),
+                  initialColor: Colors.white,
+                  hoverColorIn: Color.fromARGB(255, 213, 252, 121),
                   hoverColorOut: Color.fromARGB(255, 214, 214, 214)),
+              SizedBox(
+                width: 10,
+              ),
               NavBarItems(
                   onPressed: _launchLinkedIn,
                   title: 'LinkedIn',
-                  initialColor: Color.fromARGB(255, 214, 214, 214),
-                  hoverColorIn: Color.fromARGB(247, 252, 118, 8),
+                  initialColor: Colors.white,
+                  hoverColorIn: Color.fromARGB(255, 213, 252, 121),
                   hoverColorOut: Color.fromARGB(255, 214, 214, 214)),
+              SizedBox(
+                width: 10,
+              ),
               NavBarItems(
                   onPressed: _launchTwitter,
                   title: 'Twitter',
-                  initialColor: Color.fromARGB(255, 214, 214, 214),
-                  hoverColorIn: Color.fromARGB(247, 252, 118, 8),
+                  initialColor: Colors.white,
+                  hoverColorIn: Color.fromARGB(255, 213, 252, 121),
                   hoverColorOut: Color.fromARGB(255, 214, 214, 214)),
             ],
           )

@@ -37,8 +37,10 @@ class _MyIconButtonState extends State<MyIconButton> {
         });
       },
       child: IconButton(
+          padding: EdgeInsets.zero,
           icon: widget.icon,
           color: widget.initialColor,
+          iconSize: 20,
           onPressed: () {
             widget.onPressed();
           }),

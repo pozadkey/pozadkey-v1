@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NavLogo extends StatefulWidget {
   final Color myColor;
@@ -23,10 +22,9 @@ class _NavLogoState extends State<NavLogo> {
   @override
   Widget build(BuildContext context) {
     final _logoFont = TextStyle(
-        fontStyle: FontStyle.normal,
         fontSize: widget.logoTextSize,
-        letterSpacing: 1,
         color: widget.myColor,
+        letterSpacing: 1,
         fontWeight: FontWeight.w500);
 
     return MaterialButton(

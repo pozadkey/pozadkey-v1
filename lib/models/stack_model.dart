@@ -1,8 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 class StackModel {
   String title;
 
@@ -25,19 +22,28 @@ List<StackModel> stackList = [
     title: 'Firebase',
   ),
   StackModel(
-    title: 'Node.js',
+    title: 'Cloud Firestore',
+  ),
+  StackModel(
+    title: 'Nodejs',
   ),
   StackModel(
     title: 'MongoDB',
   ),
   StackModel(
-    title: 'Express.js',
+    title: 'Expressjs',
   ),
   StackModel(
     title: 'Mongoose',
   ),
   StackModel(
     title: 'Mocha',
+  ),
+  StackModel(
+    title: 'Android Studio',
+  ),
+  StackModel(
+    title: 'Xcode',
   ),
   StackModel(
     title: 'Postman',

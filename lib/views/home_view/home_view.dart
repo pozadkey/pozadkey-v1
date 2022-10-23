@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pozadkey/views/home_view/sections/about/about.dart';
 import 'package:pozadkey/views/home_view/sections/contact/contact.dart';
 import 'package:pozadkey/views/widgets/nav/navbar.dart';
-import 'package:pozadkey/views/widgets/nav/navbar_desktop.dart';
 import '../widgets/footer/footer.dart';
 
 import 'sections/intro/intro.dart';
@@ -47,6 +45,7 @@ class _HomeViewState extends State<HomeView> {
                                 ),
                                 Intro(
                                   key: homeKey,
+                                  projectsKey: projectsKey,
                                 ),
                                 About(
                                   key: aboutKey,
@@ -67,10 +66,14 @@ class _HomeViewState extends State<HomeView> {
       } else {
         return LayoutBuilder(
             builder: (context, constraints) => Scaffold(
-                  backgroundColor: Color.fromARGB(255, 5, 3, 12),
+                  backgroundColor: Colors.black,
                   body: Column(
                     children: [
-                      // NavBar(),
+                      NavBar(
+                        homeKey: homeKey,
+                        aboutKey: aboutKey,
+                        projectsKey: projectsKey,
+                      ),
                       Expanded(
                         child: Center(
                           child: SingleChildScrollView(
@@ -82,8 +85,16 @@ class _HomeViewState extends State<HomeView> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   SizedBox(),
-                                  Intro(),
-                                  ProjectsInfo(),
+                                  Intro(
+                                    key: homeKey,
+                                    projectsKey: projectsKey,
+                                  ),
+                                  About(
+                                    key: aboutKey,
+                                  ),
+                                  ProjectsInfo(
+                                    key: projectsKey,
+                                  ),
                                   Contact(),
                                   Footer()
                                 ],

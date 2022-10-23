@@ -8,7 +8,7 @@ class Links extends StatefulWidget {
   Color hoverColorIn;
   Color hoverColorOut;
   final Function onPressed;
-  
+
   Links(
       {Key? key,
       required this.onPressed,
@@ -25,8 +25,12 @@ class Links extends StatefulWidget {
 class _LinksState extends State<Links> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     final _linkFont = TextStyle(
-        fontSize: 16, color: widget.initialColor, fontWeight: FontWeight.w400);
+        letterSpacing: 0.5,
+        fontSize: width >= 800 ? 16 : 14,
+        color: widget.initialColor,
+        fontWeight: FontWeight.w500);
 
     return MouseRegion(
         onEnter: (m) {

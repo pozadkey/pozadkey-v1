@@ -9,9 +9,6 @@ import 'package:pozadkey/views/widgets/buttons/select_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../widgets/buttons/primary_button.dart';
-import '../../../widgets/buttons/secondary_icon_button.dart';
-
 class ProjectsInfoDesktop extends StatefulWidget {
   const ProjectsInfoDesktop({Key? key}) : super(key: key);
 
@@ -21,28 +18,36 @@ class ProjectsInfoDesktop extends StatefulWidget {
 
 class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
   final _titleFont = TextStyle(
-      fontStyle: FontStyle.normal,
       fontSize: 40,
       color: Colors.white,
-      fontWeight: FontWeight.w500);
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5);
 
   final _headerFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 50,
+      fontSize: 100,
       color: Colors.white,
+      fontWeight: FontWeight.w800,
+      letterSpacing: 0.5);
+
+  final subIntroFont = TextStyle(
+      fontSize: 12,
+      color: Color.fromARGB(255, 202, 205, 212),
+      letterSpacing: 0.3,
       fontWeight: FontWeight.w500);
 
-  final _infoFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 16,
-      color: Colors.grey[400],
-      fontWeight: FontWeight.w400);
+  final _introFont = TextStyle(
+      fontSize: 14,
+      color: Color.fromARGB(255, 202, 205, 212),
+      fontWeight: FontWeight.w400,
+      height: 2,
+      letterSpacing: 0.6);
 
-  final _platFormFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 16,
-      color: Colors.white,
-      fontWeight: FontWeight.w400);
+  final _introFont2 = TextStyle(
+      fontSize: 11,
+      height: 2,
+      color: Color.fromARGB(255, 202, 205, 212),
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.6);
 
   final projectsController = CarouselController();
 
@@ -54,22 +59,38 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return Container(
-      padding: EdgeInsets.fromLTRB(150, 0, 150, 100),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(Colors.black, BlendMode.color),
-          opacity: 0.15,
-          image: AssetImage('assets/images/dark1.JPG'),
-        ),
-      ),
+      padding: width <= 1550
+          ? EdgeInsets.fromLTRB(50, 200, 50, 70)
+          : EdgeInsets.fromLTRB(200, 200, 200, 70),
+      width: 2000,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'Featured Projects',
-            style: _headerFont,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'SELECTED',
+                    style: subIntroFont,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Work',
+                    style: _headerFont,
+                  ),
+                ],
+              ),
+            ],
           ),
           SizedBox(
             height: 40,
@@ -77,11 +98,14 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
           CarouselSlider.builder(
             carouselController: projectsController,
             options: CarouselOptions(
-                height: 500,
+                height: 830,
                 initialPage: 0,
                 viewportFraction: 1,
+                autoPlay: false,
+                autoPlayInterval: Duration(seconds: 10),
                 enlargeCenterPage: false,
                 enableInfiniteScroll: false,
+                scrollDirection: Axis.horizontal,
                 onPageChanged: (index, reason) {
                   setState(() {
                     activeIndex = index;
@@ -93,7 +117,7 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
               return buildImage(myProjects, index);
             },
           ),
-          SizedBox(height: 40),
+          SizedBox(height: 20),
           buildIndicator(),
           SizedBox(height: 40),
           Row(
@@ -101,23 +125,23 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
             children: [
               SelectButton(
                 icon: FontAwesomeIcons.arrowLeft,
-                initalTextColor: Colors.white,
-                initialBgColor: Color.fromARGB(247, 252, 118, 8),
+                initalTextColor: Colors.black,
+                initialBgColor: Colors.white,
                 hoverInColor: Colors.black,
-                hoverInBgColor: Colors.white,
-                hoverOutColor: Colors.white,
-                hoverOutBgColor: Color.fromARGB(247, 252, 118, 8),
+                hoverInBgColor: Color.fromARGB(255, 213, 252, 121),
+                hoverOutColor: Colors.black,
+                hoverOutBgColor: Colors.white,
                 onPressed: prevProj,
               ),
               SizedBox(width: 15),
               SelectButton(
                 icon: FontAwesomeIcons.arrowRight,
-                initalTextColor: Colors.white,
-                initialBgColor: Color.fromARGB(247, 252, 118, 8),
+                initalTextColor: Colors.black,
+                initialBgColor: Colors.white,
                 hoverInColor: Colors.black,
-                hoverInBgColor: Colors.white,
-                hoverOutColor: Colors.white,
-                hoverOutBgColor: Color.fromARGB(247, 252, 118, 8),
+                hoverInBgColor: Color.fromARGB(255, 213, 252, 121),
+                hoverOutColor: Colors.black,
+                hoverOutBgColor: Colors.white,
                 onPressed: nextProj,
               ),
             ],
@@ -127,164 +151,136 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
     );
   }
 
-  Widget buildImage(myProjects, int index) => Container(
-        decoration: BoxDecoration(
-          color: Color.fromARGB(255, 14, 14, 14),
-        ),
-        width: 850,
-        padding: EdgeInsets.all(50),
+  Widget buildImage(myProjects, int index) => SizedBox(
+        width: 800,
         child: Container(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            myProjects.platform,
-                            style: _platFormFont,
-                          ),
-                          Row(
-                            children: [
-                              myProjects.github.isEmpty
-                                  ? Container()
-                                  : MyIconButton(
-                                      icon: Icon(FontAwesomeIcons.github),
-                                      initialColor:
-                                          Color.fromARGB(247, 252, 118, 8),
-                                      hoverInColor: Colors.white,
-                                      hoverOutColor:
-                                          Color.fromARGB(247, 252, 118, 8),
-                                      onPressed: () async {
-                                        final url =
-                                            Uri.parse(myProjects.github);
-                                        if (await canLaunchUrl(url)) {
-                                          await launchUrl(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
-                                      }),
-                              myProjects.playstore.isEmpty
-                                  ? Container()
-                                  : MyIconButton(
-                                      icon: Icon(FontAwesomeIcons.googlePlay),
-                                      initialColor:
-                                          Color.fromARGB(247, 252, 118, 8),
-                                      hoverInColor: Colors.white,
-                                      hoverOutColor:
-                                          Color.fromARGB(247, 252, 118, 8),
-                                      onPressed: () async {
-                                        final url =
-                                            Uri.parse(myProjects.playstore);
-                                        if (await canLaunchUrl(url)) {
-                                          await launchUrl(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
-                                      }),
-                              myProjects.appstore.isEmpty
-                                  ? Container()
-                                  : MyIconButton(
-                                      icon: Icon(FontAwesomeIcons.appStoreIos),
-                                      initialColor:
-                                          Color.fromARGB(247, 252, 118, 8),
-                                      hoverInColor: Colors.white,
-                                      hoverOutColor:
-                                          Color.fromARGB(247, 252, 118, 8),
-                                      onPressed: () async {
-                                        final url =
-                                            Uri.parse(myProjects.appstore);
-                                        if (await canLaunchUrl(url)) {
-                                          await launchUrl(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
-                                      }),
-                              myProjects.live.isEmpty
-                                  ? Container()
-                                  : MyIconButton(
-                                      icon: Icon(FontAwesomeIcons
-                                          .arrowUpRightFromSquare),
-                                      initialColor:
-                                          Color.fromARGB(247, 252, 118, 8),
-                                      hoverInColor: Colors.white,
-                                      hoverOutColor:
-                                          Color.fromARGB(247, 252, 118, 8),
-                                      onPressed: () async {
-                                        final url = Uri.parse(myProjects.live);
-                                        if (await canLaunchUrl(url)) {
-                                          await launchUrl(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
-                                      }),
-                            ],
-                          ),
-                        ],
+                padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
+                color: Color.fromARGB(255, 15, 15, 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(myProjects.image),
+                            fit: BoxFit.cover),
                       ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text(
-                        myProjects.title,
-                        style: _titleFont,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        myProjects.info,
-                        style: _infoFont,
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                            width: 100,
-                            decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 23, 23, 23),
-                                border: Border.all(
-                                  color: Color.fromARGB(255, 23, 23, 23),
+                      height: 450,
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Text(
+                      myProjects.stack.toUpperCase(),
+                      style: _introFont2,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      myProjects.title,
+                      style: _titleFont,
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Text(
+                      myProjects.info,
+                      style: _introFont,
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        myProjects.github.isEmpty
+                            ? Container()
+                            : MyIconButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.github,
+                                  size: 20,
                                 ),
-                                borderRadius: BorderRadius.circular(2.0)),
-                            child: Text(
-                              myProjects.stack1,
-                              style: _infoFont,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          myProjects.stack2.isEmpty
-                              ? Container()
-                              : Container(
-                                  padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 23, 23, 23),
-                                      border: Border.all(
-                                        color: Color.fromARGB(255, 23, 23, 23),
-                                      ),
-                                      borderRadius: BorderRadius.circular(2.0)),
-                                  child: Text(
-                                    myProjects.stack2,
-                                    style: _infoFont,
-                                    textAlign: TextAlign.center,
-                                  ),
+                                initialColor: Colors.white,
+                                hoverInColor:
+                                    Color.fromARGB(255, 213, 252, 121),
+                                hoverOutColor: Colors.white,
+                                onPressed: () async {
+                                  final url = Uri.parse(myProjects.github);
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                }),
+                        myProjects.playstore.isEmpty
+                            ? Container()
+                            : MyIconButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.googlePlay,
+                                  size: 20,
                                 ),
-                        ],
-                      ),
-                    ],
-                  ),
+                                initialColor: Colors.white,
+                                hoverInColor:
+                                    Color.fromARGB(255, 213, 252, 121),
+                                hoverOutColor: Colors.white,
+                                onPressed: () async {
+                                  final url = Uri.parse(myProjects.playstore);
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                }),
+                        myProjects.appstore.isEmpty
+                            ? Container()
+                            : MyIconButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.appStoreIos,
+                                  size: 20,
+                                ),
+                                initialColor: Colors.white,
+                                hoverInColor:
+                                    Color.fromARGB(255, 213, 252, 121),
+                                hoverOutColor: Colors.white,
+                                onPressed: () async {
+                                  final url = Uri.parse(myProjects.appstore);
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                }),
+                        myProjects.live.isEmpty
+                            ? Container()
+                            : MyIconButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.arrowUpRightFromSquare,
+                                  size: 20,
+                                ),
+                                initialColor: Colors.white,
+                                hoverInColor:
+                                    Color.fromARGB(255, 213, 252, 121),
+                                hoverOutColor: Colors.white,
+                                onPressed: () async {
+                                  final url = Uri.parse(myProjects.live);
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                }),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -298,7 +294,7 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
         effect: ExpandingDotsEffect(
           dotWidth: 12,
           dotHeight: 12,
-          activeDotColor: Color.fromARGB(247, 252, 118, 8),
+          activeDotColor: Colors.white,
           dotColor: Color.fromARGB(255, 52, 52, 52),
         ),
       );

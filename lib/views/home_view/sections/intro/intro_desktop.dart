@@ -1,140 +1,139 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
-import '../../../widgets/buttons/primary_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../widgets/buttons/primary_icon_button.dart';
 import '../../../widgets/buttons/secondary_icon_button.dart';
 
 class IntroDesktop extends StatefulWidget {
-  const IntroDesktop({Key? key}) : super(key: key);
+  var projectsKey = GlobalKey();
+  IntroDesktop({Key? key, required this.projectsKey}) : super(key: key);
 
   @override
   State<IntroDesktop> createState() => _IntroDesktopState();
 }
 
 class _IntroDesktopState extends State<IntroDesktop> {
-  final _nameFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 80,
+  final _headerFont = TextStyle(
+      fontSize: 100,
       color: Colors.white,
-      fontWeight: FontWeight.w600);
+      fontWeight: FontWeight.w800,
+      letterSpacing: 0.5);
+
+  final _headerFont2 = TextStyle(
+      fontSize: 50,
+      color: Color.fromARGB(255, 202, 205, 212),
+      fontWeight: FontWeight.w800,
+      letterSpacing: 0.5);
 
   final subIntroFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 40,
-      color: Colors.grey[400],
-      fontWeight: FontWeight.w600);
+      fontSize: 12,
+      color: Color.fromARGB(255, 202, 205, 212),
+      letterSpacing: 0.3,
+      fontWeight: FontWeight.w500);
 
   final _introFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 16,
-      color: Colors.grey[400],
-      fontWeight: FontWeight.w400);
+      fontSize: 14,
+      color: Color.fromARGB(255, 202, 205, 212),
+      fontWeight: FontWeight.w400,
+      height: 2,
+      letterSpacing: 0.6);
 
-  final _introColoredFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 16,
-      color: Color.fromARGB(247, 252, 118, 8),
-      fontWeight: FontWeight.w400);
-
-  final _boxedFont = TextStyle(
-      fontStyle: FontStyle.normal,
-      fontSize: 24,
-      color: Colors.black,
-      letterSpacing: 0.41,
-      fontWeight: FontWeight.w600);
+  final _introFont2 = TextStyle(
+      fontSize: 14,
+      height: 2,
+      color: Color.fromARGB(255, 233, 231, 231),
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.6);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    double width = MediaQuery.of(context).size.width;
+
+    return SizedBox(
       height: 900,
-      padding: EdgeInsets.fromLTRB(200, 0, 200, 0),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(Colors.black, BlendMode.color),
-          opacity: 0.25,
-          image: AssetImage('assets/images/dark2.JPG'),
-        ),
-      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.center,
+          Container(
+            padding: width <= 1550
+                ? EdgeInsets.fromLTRB(50, 15, 50, 15)
+                : EdgeInsets.fromLTRB(200, 15, 200, 15),
+            width: 2000,
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Hi! I am ',
+                  'HI! I AM A',
                   style: subIntroFont,
                 ),
                 SizedBox(
-                  width: 5,
+                  height: 5,
                 ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0)),
-                  child: Text(
-                    'Web & Mobile Engineer',
-                    style: _boxedFont,
+                Text.rich(TextSpan(children: [
+                  TextSpan(
+                    text: 'Web ',
+                    style: _headerFont,
                   ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            child: Text(
-              'Damilare Ajakaiye',
-              style: _nameFont,
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            child: Text(
-              'I build for the web and mobile.',
-              style: subIntroFont,
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            width: 550,
-            child: Text(
-              'I am a software engineer specializing in creating solutions suitable for  User Experience. I\'m currently focused on building more accesible products using modern web technology. ',
-              style: _introFont,
-              textAlign: TextAlign.left,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          SizedBox(
-            width: 350,
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PrimaryButton(
-                  title: 'Check Out My Projects',
-                  initalTextColor: Colors.white,
-                  initialBgColor: Color.fromARGB(247, 252, 118, 8),
-                  hoverInColor: Colors.black,
-                  hoverInBgColor: Colors.white,
-                  hoverOutColor: Colors.white,
-                  hoverOutBgColor: Color.fromARGB(247, 252, 118, 8),
-                  onPressed: () {},
+                  TextSpan(
+                    text: '&\n',
+                    style: _headerFont2,
+                  ),
+                  TextSpan(
+                    text: 'Mobile\n',
+                    style: _headerFont,
+                  ),
+                  TextSpan(
+                    text: 'Engineer',
+                    style: _headerFont,
+                  ),
+                ])),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: 600,
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'I\'m ',
+                          style: _introFont,
+                        ),
+                        TextSpan(
+                            text: 'Damilare Ajakaiye, ', style: _introFont2),
+                        TextSpan(
+                            text:
+                                'a web & mobile engineer who loves to craft suitable experiences for the web. I\'m focused on building more accessible products and opportunities to collaborate with diverse industries around the world.',
+                            style: _introFont),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                SizedBox(
+                  width: 200,
+                  child: SecondaryIconButton(
+                    title: 'View My Works',
+               
+                    bgColor: Colors.transparent,
+                    bgColorOut: Colors.transparent,
+                    titleColor: Colors.white,
+                    titleColorIn: Colors.black,
+                    titleColorOut: Colors.white,
+                    myColor: Colors.white,
+                    onPressed: () => Scrollable.ensureVisible(
+                        widget.projectsKey.currentContext!,
+                        alignment: 1,
+                        duration: Duration(seconds: 1),
+                        curve: Curves.ease),
+                  ),
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
