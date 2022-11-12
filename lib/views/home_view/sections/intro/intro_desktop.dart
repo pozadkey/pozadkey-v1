@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../widgets/buttons/primary_icon_button.dart';
 import '../../../widgets/buttons/secondary_icon_button.dart';
 
 class IntroDesktop extends StatefulWidget {
@@ -117,7 +115,6 @@ class _IntroDesktopState extends State<IntroDesktop> {
                   width: 200,
                   child: SecondaryIconButton(
                     title: 'View My Works',
-               
                     bgColor: Colors.transparent,
                     bgColorOut: Colors.transparent,
                     titleColor: Colors.white,

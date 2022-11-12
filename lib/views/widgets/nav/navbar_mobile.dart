@@ -89,12 +89,12 @@ class _NavBarMobileState extends State<NavBarMobile> {
         Visibility(
             visible: _isVisible,
             child: AnimatedContainer(
-              color: Color.fromARGB(255, 3, 3, 3),
+              color: Colors.black,
               padding: width <= 420
                   ? EdgeInsets.fromLTRB(20, 20, 20, 20)
                   : EdgeInsets.only(
-                      top: 30.0,
-                      bottom: 30.0,
+                      top: 20.0,
+                      bottom: 20.0,
                     ),
               duration: Duration(milliseconds: 375),
               curve: Curves.easeInOut,
@@ -159,7 +159,7 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                     duration: Duration(seconds: 1),
                                     curve: Curves.ease);
                               },
-                              title: 'Projects',
+                              title: 'Work',
                               initialColor: Colors.white,
                               hoverColorIn: Color.fromARGB(255, 213, 252, 121),
                               hoverColorOut: Colors.white),

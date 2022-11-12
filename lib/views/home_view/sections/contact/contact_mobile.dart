@@ -69,14 +69,14 @@ class _ContactMobileState extends State<ContactMobile> {
     return Container(
       height: 750,
       padding: width >= 800
-          ? EdgeInsets.fromLTRB(110, 100, 110, 0)
-          : EdgeInsets.fromLTRB(20, 100, 20, 0),
+          ? EdgeInsets.fromLTRB(110, 50, 110, 50)
+          : EdgeInsets.fromLTRB(20, 50, 20, 50),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'SAY HELLO!',
+            'SAY  HELLO!',
             style: subIntroFont,
           ),
           SizedBox(
@@ -112,9 +112,9 @@ class _ContactMobileState extends State<ContactMobile> {
             height: 20,
           ),
           SizedBox(
-              width: 300,
+              width: 250,
               child: SizedBox(
-                width: 350,
+                width: 250,
                 child: FittedBox(
                   child: SecondaryLargeButton(
                     bgColor: Colors.transparent,

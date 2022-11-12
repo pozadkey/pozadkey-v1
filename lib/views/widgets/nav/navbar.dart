@@ -24,13 +24,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return LayoutBuilder(builder: (context, constraints) {
-      if (width <= 420) {
-        return NavBarMobile(
-          homeKey: widget.homeKey,
-          aboutKey: widget.aboutKey,
-          projectsKey: widget.projectsKey,
-        );
-      } else if (width > 421 && width <= 1243) {
+      if (width <= 1243) {
         return NavBarMobile(
           homeKey: widget.homeKey,
           aboutKey: widget.aboutKey,

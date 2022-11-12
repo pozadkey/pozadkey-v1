@@ -43,6 +43,12 @@ class _ProjectsInfoMobileState extends State<ProjectsInfoMobile> {
       fontWeight: FontWeight.w500,
       letterSpacing: 0.6);
 
+  final _headerFont2 = TextStyle(
+      fontSize: 50,
+      color: Colors.white,
+      fontWeight: FontWeight.w800,
+      letterSpacing: 0.5);
+
   final projectsController = CarouselController();
 
   int activeIndex = 0;
@@ -63,8 +69,8 @@ class _ProjectsInfoMobileState extends State<ProjectsInfoMobile> {
 
     return Container(
       padding: width >= 800
-          ? EdgeInsets.fromLTRB(110, 15, 110, 15)
-          : EdgeInsets.fromLTRB(20, 100, 20, 0),
+          ? EdgeInsets.fromLTRB(110, 100, 110, 100)
+          : EdgeInsets.fromLTRB(20, 100, 20, 100),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -86,7 +92,7 @@ class _ProjectsInfoMobileState extends State<ProjectsInfoMobile> {
           CarouselSlider.builder(
             carouselController: projectsController,
             options: CarouselOptions(
-                height: width <= 290 ? 700 : 550,
+                height: width <= 290 ? 700 : 600,
                 initialPage: 0,
                 viewportFraction: 1,
                 enlargeCenterPage: false,
@@ -151,41 +157,53 @@ class _ProjectsInfoMobileState extends State<ProjectsInfoMobile> {
     );
   }
 
-  Widget buildImage(myProjects, int index) => Container(
-        //  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+  Widget buildImage(myProjects, int index) => SizedBox(
+        //width: 800,
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+                padding: EdgeInsets.all(18),
+                color: Color.fromARGB(255, 12, 12, 12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(myProjects.image),
-                            fit: BoxFit.cover),
-                      ),
-                      height: 300,
-                    ),
+                    myProjects.image.isEmpty
+                        ? Center(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 40, 0, 40),
+                              child: Text(
+                                'NODE-AUTH',
+                                style: _headerFont2,
+                              ),
+                            ),
+                          )
+                        : Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(myProjects.image),
+                                  scale: 20,
+                                  fit: BoxFit.contain),
+                            ),
+                            width: double.infinity,
+                            height: 200),
                     SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
                     Text(
                       myProjects.stack.toUpperCase(),
                       style: _introFont2,
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.center,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
                     Text(
                       myProjects.title,
                       style: _titleFont,
-                      textAlign: TextAlign.left,
                     ),
                     SizedBox(
                       height: 10,
@@ -193,7 +211,6 @@ class _ProjectsInfoMobileState extends State<ProjectsInfoMobile> {
                     Text(
                       myProjects.info,
                       style: _introFont,
-                      textAlign: TextAlign.left,
                     ),
                     SizedBox(
                       height: 10,
@@ -295,7 +312,7 @@ class _ProjectsInfoMobileState extends State<ProjectsInfoMobile> {
           dotWidth: 12,
           dotHeight: 12,
           activeDotColor: Colors.white,
-          dotColor: Color.fromARGB(255, 52, 52, 52),
+          dotColor: Color.fromARGB(255, 40, 40, 40),
         ),
       );
 }

@@ -30,8 +30,18 @@ List<Projects> projectsList = [
       live: 'https://tapcapitals.com',
       github: ''),
   Projects(
+      title: 'Node-Auth',
+      image: '',
+      info:
+          'A simple and secure user authentication system with user-register, user-login, email-verification and password recovery features.',
+      stack: 'Nodejs MongoDB Express',
+      playstore: '',
+      appstore: '',
+      live: '',
+      github: 'https://github.com/pozadkey/node-auth'),
+  Projects(
       title: 'OOU-LLB21',
-      image: 'assets/images/legal_logo.PNG',
+      image: 'assets/images/oou-llb-21-iphone.png',
       info:
           'A yearbook application built for a university\'s law faculty.  Built for Android and iOS platforms, it displays hard-coded data about the faculty and its students.',
       stack: 'Android  iOS  Flutter',

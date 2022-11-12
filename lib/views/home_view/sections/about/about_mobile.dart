@@ -41,7 +41,6 @@ class _AboutMobileState extends State<AboutMobile> {
 
     void resumeLink() {
       final url = Uri.parse(
-        
           'https://docs.google.com/document/d/1BYRWahLz8h9vvaDhzJEOKYsEBFVTO144_VZGHr-j-BA/edit?usp=sharing');
       launchUrl(url);
     }

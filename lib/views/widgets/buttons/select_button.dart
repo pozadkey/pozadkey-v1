@@ -48,9 +48,8 @@ class _SelectButtonState extends State<SelectButton> {
       },
       child: TextButton(
         child: Padding(
-          padding: width >= 800 ? EdgeInsets.all(10) : EdgeInsets.all(10),
-          child: Icon(widget.icon,
-              color: widget.initalTextColor, size: width >= 800 ? 20 : 15),
+          padding: EdgeInsets.all(10),
+          child: Icon(widget.icon, color: widget.initalTextColor, size: 20),
         ),
         onPressed: () {
           widget.onPressed();

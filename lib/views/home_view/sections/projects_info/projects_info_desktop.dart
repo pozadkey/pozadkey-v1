@@ -29,6 +29,12 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
       fontWeight: FontWeight.w800,
       letterSpacing: 0.5);
 
+  final _headerFont2 = TextStyle(
+      fontSize: 80,
+      color: Colors.white,
+      fontWeight: FontWeight.w800,
+      letterSpacing: 0.5);
+
   final subIntroFont = TextStyle(
       fontSize: 12,
       color: Color.fromARGB(255, 202, 205, 212),
@@ -160,19 +166,31 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
             children: [
               Container(
                 padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
-                color: Color.fromARGB(255, 15, 15, 15),
+                color: Color.fromARGB(255, 12, 12, 12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(myProjects.image),
-                            fit: BoxFit.cover),
-                      ),
-                      height: 450,
-                    ),
+                    myProjects.image.isEmpty
+                        ? Center(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 80, 0, 80),
+                              child: Text(
+                                'NODE-AUTH',
+                                style: _headerFont2,
+                              ),
+                            ),
+                          )
+                        : Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(myProjects.image),
+                                  scale: 20,
+                                  fit: BoxFit.contain),
+                            ),
+                            width: double.infinity,
+                            height: 450,
+                          ),
                     SizedBox(
                       height: 25,
                     ),
@@ -295,7 +313,7 @@ class _ProjectsInfoDesktopState extends State<ProjectsInfoDesktop> {
           dotWidth: 12,
           dotHeight: 12,
           activeDotColor: Colors.white,
-          dotColor: Color.fromARGB(255, 52, 52, 52),
+          dotColor: Color.fromARGB(255, 40, 40, 40),
         ),
       );
 }
