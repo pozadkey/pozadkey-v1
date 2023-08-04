@@ -1,54 +1,95 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/material.dart';
+
 class StackModel {
   String title;
+  double width;
+  Color? textColor;
+  Color? textBgdColor;
 
   StackModel({
     required this.title,
+    required this.width,
+    required this.textColor,
+    required this.textBgdColor,
   });
 }
 
 List<StackModel> stackList = [
   StackModel(
-    title: 'JavaScript',
-  ),
+      title: 'JavaScript',
+      width: 80,
+      textColor: Colors.red[600],
+      textBgdColor: Colors.red[800]),
   StackModel(
-    title: 'Dart',
-  ),
+      title: 'Dart',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
   StackModel(
-    title: 'Flutter',
-  ),
+      title: 'Flutter',
+      width: 80,
+      textColor: Colors.red[600],
+      textBgdColor: Colors.red[800]),
   StackModel(
-    title: 'Firebase',
-  ),
+      title: 'Firebase',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
   StackModel(
-    title: 'Cloud Firestore',
-  ),
+      title: 'Cloud Firestore',
+      width: 80,
+      textColor: Colors.red[600],
+      textBgdColor: Colors.red[800]),
   StackModel(
-    title: 'Nodejs',
-  ),
+      title: 'Node.js',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
   StackModel(
-    title: 'MongoDB',
-  ),
+      title: 'Riverpod',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
   StackModel(
-    title: 'Expressjs',
-  ),
+      title: 'MongoDb',
+      width: 80,
+      textColor: Colors.red[600],
+      textBgdColor: Colors.red[800]),
   StackModel(
-    title: 'Mongoose',
-  ),
+      title: 'Express.js',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
   StackModel(
-    title: 'Mocha',
-  ),
+      title: 'Mongoose',
+      width: 80,
+      textColor: Colors.red[600],
+      textBgdColor: Colors.red[800]),
   StackModel(
-    title: 'Android Studio',
-  ),
+      title: 'Mocha',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
   StackModel(
-    title: 'Xcode',
-  ),
+      title: 'Android Studio',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
   StackModel(
-    title: 'Postman',
-  ),
+      title: 'Xcode',
+      width: 80,
+      textColor: Colors.red[600],
+      textBgdColor: Colors.red[800]),
   StackModel(
-    title: 'Git',
-  ),
+      title: 'Postman',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
+  StackModel(
+      title: 'Git',
+      width: 50,
+      textColor: Colors.orange[600],
+      textBgdColor: Colors.orange[800]),
 ];

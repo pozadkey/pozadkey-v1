@@ -30,7 +30,7 @@ class _NavBarItemsState extends State<NavBarItems> {
         fontSize: 14,
         letterSpacing: 0.5,
         color: widget.initialColor,
-        fontWeight: FontWeight.w500);
+        fontWeight: FontWeight.w600);
 
     return MouseRegion(
         onEnter: (m) {
@@ -44,6 +44,7 @@ class _NavBarItemsState extends State<NavBarItems> {
           });
         },
         child: MaterialButton(
+          highlightColor: Colors.transparent,
           padding: EdgeInsets.zero,
           minWidth: 0,
           onPressed: () {

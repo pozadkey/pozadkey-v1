@@ -20,26 +20,8 @@ class _FooterDesktopState extends State<FooterDesktop> {
       color: Colors.grey[350],
       fontWeight: FontWeight.w500);
 
-  void _launchGithub() async {
-    final url = Uri.parse('https://github.com/pozadkey');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  void _launchLinkedIn() async {
-    final url = Uri.parse('https://linkedin.com/in/damilare-ajakaiye');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  void _launchTwitter() async {
-    final url = Uri.parse('https://twitter.com/pozadkey');
+  openUrl(pageUrl) async {
+    final url = Uri.parse(pageUrl);
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
@@ -56,7 +38,7 @@ class _FooterDesktopState extends State<FooterDesktop> {
     return Container(
       width: 2000,
       padding: EdgeInsets.fromLTRB(200, 20, 200, 20),
-      color: Colors.black,
+      color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -65,35 +47,36 @@ class _FooterDesktopState extends State<FooterDesktop> {
                 Navigator.pushNamed(context, '/');
               },
               title: '© $formattedDate. Damilare Ajakaiye.',
-              initialColor: Colors.white,
-              hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-              hoverColorOut: Color.fromARGB(255, 214, 214, 214)),
+              initialColor: Colors.black,
+              hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+              hoverColorOut: Colors.black),
           Row(
             children: [
               NavBarItems(
-                  onPressed: _launchGithub,
+                  onPressed: () => openUrl('https://github.com/pozadkey'),
                   title: 'Github',
-                  initialColor: Colors.white,
-                  hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                  hoverColorOut: Color.fromARGB(255, 214, 214, 214)),
+                  initialColor: Colors.black,
+                  hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                  hoverColorOut: Colors.black),
               SizedBox(
                 width: 10,
               ),
               NavBarItems(
-                  onPressed: _launchLinkedIn,
+                  onPressed: () =>
+                      openUrl('https://linkedin.com/in/damilare-ajakaiye'),
                   title: 'LinkedIn',
-                  initialColor: Colors.white,
-                  hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                  hoverColorOut: Color.fromARGB(255, 214, 214, 214)),
+                  initialColor: Colors.black,
+                  hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                  hoverColorOut: Colors.black),
               SizedBox(
                 width: 10,
               ),
               NavBarItems(
-                  onPressed: _launchTwitter,
+                  onPressed: () => openUrl('https://twitter.com/pozadkey'),
                   title: 'Twitter',
-                  initialColor: Colors.white,
-                  hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                  hoverColorOut: Color.fromARGB(255, 214, 214, 214)),
+                  initialColor: Colors.black,
+                  hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                  hoverColorOut: Colors.black),
             ],
           )
         ],

@@ -14,27 +14,8 @@ class FooterMobile extends StatefulWidget {
 }
 
 class _FooterMobileState extends State<FooterMobile> {
-
-  void _launchGithub() async {
-    final url = Uri.parse('https://github.com/pozadkey');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  void _launchLinkedIn() async {
-    final url = Uri.parse('https://linkedin.com/in/damilare-ajakaiye');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  void _launchTwitter() async {
-    final url = Uri.parse('https://twitter.com/pozadkey');
+  openUrl(pageUrl) async {
+    final url = Uri.parse(pageUrl);
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
@@ -60,29 +41,30 @@ class _FooterMobileState extends State<FooterMobile> {
             child: Row(
               children: [
                 NavBarItems(
-                    onPressed: _launchGithub,
+                    onPressed: () => openUrl('https://github.com/pozadkey'),
                     title: 'Github',
-                    initialColor: Colors.white,
-                    hoverColorIn: Color.fromARGB(247, 252, 118, 8),
-                    hoverColorOut: Colors.white),
+                    initialColor: Colors.black,
+                    hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                    hoverColorOut: Colors.black),
                 SizedBox(
                   width: 10,
                 ),
                 NavBarItems(
-                    onPressed: _launchLinkedIn,
+                    onPressed: () =>
+                        openUrl('https://linkedin.com/in/damilare-ajakaiye'),
                     title: 'LinkedIn',
-                    initialColor: Colors.white,
-                    hoverColorIn: Color.fromARGB(247, 252, 118, 8),
-                    hoverColorOut: Colors.white),
+                    initialColor: Colors.black,
+                    hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                    hoverColorOut: Colors.black),
                 SizedBox(
                   width: 10,
                 ),
                 NavBarItems(
-                    onPressed: _launchTwitter,
+                    onPressed: () => openUrl('https://twitter.com/pozadkey'),
                     title: 'Twitter',
-                    initialColor: Colors.white,
-                    hoverColorIn: Color.fromARGB(247, 252, 118, 8),
-                    hoverColorOut: Colors.white),
+                    initialColor: Colors.black,
+                    hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                    hoverColorOut: Colors.black),
               ],
             ),
           ),
@@ -90,21 +72,22 @@ class _FooterMobileState extends State<FooterMobile> {
             height: 20,
           ),
           FittedBox(
-            child: SizedBox(
-              child: Row(
-                children: [
-                  NavBarItems(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/');
-                      },
-                      title: '© $formattedDate. Damilare Ajakaiye.',
-                      initialColor: Colors.white,
-                      hoverColorIn: Color.fromARGB(247, 252, 118, 8),
-                      hoverColorOut: Colors.white),
-                ],
-              ),
+            child: Row(
+              children: [
+                NavBarItems(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
+                    title: '© $formattedDate. Damilare Ajakaiye.',
+                    initialColor: Colors.black,
+                    hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                    hoverColorOut: Colors.black),
+              ],
             ),
           ),
+          SizedBox(
+            height: 30,
+          )
         ],
       ),
     );

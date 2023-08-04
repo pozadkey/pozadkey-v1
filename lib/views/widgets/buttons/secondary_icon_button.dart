@@ -61,7 +61,7 @@ class _SecondaryIconButtonState extends State<SecondaryIconButton> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                widget.title.toUpperCase(),
+                widget.title,
                 style: _buttonFont,
               ),
               SizedBox(

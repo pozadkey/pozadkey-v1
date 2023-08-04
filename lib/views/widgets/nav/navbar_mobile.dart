@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../buttons/navbar_button.dart';
+import '../buttons/primary_button.dart';
 import '../buttons/primary_icon_button.dart';
 import '../buttons/secondary_icon_button.dart';
 import 'navbar_items.dart';
@@ -25,6 +26,15 @@ class NavBarMobile extends StatefulWidget {
 
   @override
   State<NavBarMobile> createState() => _NavBarMobileState();
+}
+
+openUrl(pageUrl) async {
+  final url = Uri.parse(pageUrl);
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
 }
 
 void _launchEmail() async {
@@ -51,7 +61,7 @@ class _NavBarMobileState extends State<NavBarMobile> {
     return Column(
       children: [
         Container(
-          color: Colors.black,
+          color: Colors.white,
           alignment: Alignment.center,
           padding: width <= 420
               ? EdgeInsets.fromLTRB(10, 15, 10, 15)
@@ -60,7 +70,7 @@ class _NavBarMobileState extends State<NavBarMobile> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NavLogo(
-                myColor: Colors.white,
+                myColor: Colors.black,
                 logoTextSize: width <= 340 ? 15 : 18,
                 iconsSize: width <= 340 ? 15 : 18,
               ),
@@ -80,8 +90,8 @@ class _NavBarMobileState extends State<NavBarMobile> {
                   }
                 },
                 hamburgerColor: _isVisible == false
-                    ? Colors.white
-                    : Color.fromARGB(255, 213, 252, 121),
+                    ? Colors.black
+                    : Color.fromARGB(255, 2, 185, 130),
               )
             ],
           ),
@@ -89,7 +99,7 @@ class _NavBarMobileState extends State<NavBarMobile> {
         Visibility(
             visible: _isVisible,
             child: AnimatedContainer(
-              color: Colors.black,
+              color: Colors.white,
               padding: width <= 420
                   ? EdgeInsets.fromLTRB(20, 20, 20, 20)
                   : EdgeInsets.only(
@@ -122,9 +132,9 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                     curve: Curves.ease);
                               },
                               title: 'Home',
-                              initialColor: Colors.white,
-                              hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                              hoverColorOut: Colors.white),
+                              initialColor: Colors.black,
+                              hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                              hoverColorOut: Colors.black),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -141,9 +151,9 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                     curve: Curves.ease);
                               },
                               title: 'About',
-                              initialColor: Colors.white,
-                              hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                              hoverColorOut: Colors.white),
+                              initialColor: Colors.black,
+                              hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                              hoverColorOut: Colors.black),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -159,10 +169,10 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                     duration: Duration(seconds: 1),
                                     curve: Curves.ease);
                               },
-                              title: 'Work',
-                              initialColor: Colors.white,
-                              hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                              hoverColorOut: Colors.white),
+                              title: 'Projects',
+                              initialColor: Colors.black,
+                              hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                              hoverColorOut: Colors.black),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -172,14 +182,15 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SecondaryIconButton(
-                                      title: 'View My Résumé',
+                                      title: 'View My Resume',
                                       bgColor: Colors.transparent,
                                       bgColorOut: Colors.transparent,
-                                      titleColor: Colors.white,
-                                      titleColorIn: Colors.black,
-                                      titleColorOut: Colors.white,
-                                      myColor: Colors.white,
-                                      onPressed: resumeLink),
+                                      titleColor: Colors.black,
+                                      titleColorIn: Colors.white,
+                                      titleColorOut: Colors.black,
+                                      myColor: Colors.black,
+                                      onPressed: () => openUrl(
+                                          'https://docs.google.com/document/d/1BYRWahLz8h9vvaDhzJEOKYsEBFVTO144_VZGHr-j-BA/edit?usp=sharing')),
                                 ],
                               )),
                           SizedBox(
@@ -190,21 +201,23 @@ class _NavBarMobileState extends State<NavBarMobile> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  PrimaryIconButton(
+                                  PrimaryButton(
                                     title: 'Chat With Me',
-                                    initalTextColor: Colors.black,
-                                    initialBgColor: Colors.white,
-                                    hoverInColor: Colors.white,
+                                    initalTextColor: Colors.white,
                                     hoverInBgColor:
-                                        Color.fromARGB(255, 213, 252, 121),
-                                    hoverOutColor: Colors.black,
-                                    hoverOutBgColor: Colors.white,
+                                        Color.fromARGB(255, 2, 185, 130),
+                                    initialBgColor: Colors.black,
+                                    hoverInColor: Colors.black,
+                                    hoverOutBgColor: Colors.black,
+                                    hoverOutColor: Colors.white,
                                     onPressed: () {
                                       setState(() {
                                         _isVisible = false;
                                         myMenu = FontAwesomeIcons.bars;
                                       });
-                                      _launchEmail;
+
+                                      openUrl(
+                                          'mailto:hello@pozadkey.com?subject=Hello');
                                     },
                                   ),
                                 ],

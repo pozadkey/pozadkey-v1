@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../buttons/primary_button.dart';
 import '../buttons/primary_icon_button.dart';
 import 'navbar_items.dart';
 import 'navbar_logo.dart';
@@ -22,8 +23,8 @@ class NavBarDesktop extends StatefulWidget {
   State<NavBarDesktop> createState() => _NavBarDesktopState();
 }
 
-void _launchEmail() async {
-  final url = Uri.parse('mailto:hello@pozadkey.com?subject=Hello');
+openUrl(pageUrl) async {
+  final url = Uri.parse(pageUrl);
   if (await canLaunchUrl(url)) {
     await launchUrl(url);
   } else {
@@ -37,7 +38,7 @@ class _NavBarDesktopState extends State<NavBarDesktop> {
     double width = MediaQuery.of(context).size.width;
 
     return Container(
-      color: Colors.black,
+      color: Colors.white,
       width: double.infinity,
       child: Column(
         children: [
@@ -50,7 +51,7 @@ class _NavBarDesktopState extends State<NavBarDesktop> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 NavLogo(
-                  myColor: Colors.white,
+                  myColor: Colors.black,
                   logoTextSize: 18,
                   iconsSize: 18,
                 ),
@@ -64,9 +65,9 @@ class _NavBarDesktopState extends State<NavBarDesktop> {
                             duration: Duration(seconds: 1),
                             curve: Curves.ease),
                         title: 'Home',
-                        initialColor: Colors.white,
-                        hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                        hoverColorOut: Colors.white),
+                        initialColor: Colors.black,
+                        hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                        hoverColorOut: Colors.black),
                     SizedBox(
                       width: 10,
                     ),
@@ -77,9 +78,9 @@ class _NavBarDesktopState extends State<NavBarDesktop> {
                             duration: Duration(seconds: 1),
                             curve: Curves.ease),
                         title: 'About',
-                        initialColor: Colors.white,
-                        hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                        hoverColorOut: Colors.white),
+                        initialColor: Colors.black,
+                        hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                        hoverColorOut: Colors.black),
                     SizedBox(
                       width: 10,
                     ),
@@ -89,25 +90,22 @@ class _NavBarDesktopState extends State<NavBarDesktop> {
                             alignment: 1,
                             duration: Duration(seconds: 1),
                             curve: Curves.ease),
-                        title: 'Work',
-                        initialColor: Colors.white,
-                        hoverColorIn: Color.fromARGB(255, 213, 252, 121),
-                        hoverColorOut: Colors.white),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    PrimaryIconButton(
-                      title: 'Chat With Me',
-                      initalTextColor: Colors.black,
-                      initialBgColor: Colors.white,
-                      hoverInColor: Colors.black,
-                      hoverInBgColor: Color.fromARGB(255, 213, 252, 121),
-                      hoverOutColor: Colors.black,
-                      hoverOutBgColor: Colors.white,
-                      onPressed: _launchEmail,
-                    ),
+                        title: 'Projects',
+                        initialColor: Colors.black,
+                        hoverColorIn: Color.fromARGB(255, 2, 185, 130),
+                        hoverColorOut: Colors.black),
                   ],
-                )
+                ),
+                PrimaryButton(
+                    title: 'Work With Me',
+                    initalTextColor: Colors.white,
+                    hoverInBgColor: Color.fromARGB(255, 2, 185, 130),
+                    initialBgColor: Colors.black,
+                    hoverInColor: Colors.black,
+                    hoverOutBgColor: Colors.black,
+                    hoverOutColor: Colors.white,
+                    onPressed: () =>
+                        openUrl('mailto:hello@pozadkey.com?subject=Hello'))
               ],
             ),
           ),

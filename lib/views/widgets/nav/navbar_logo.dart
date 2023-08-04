@@ -24,8 +24,8 @@ class _NavLogoState extends State<NavLogo> {
     final _logoFont = TextStyle(
         fontSize: widget.logoTextSize,
         color: widget.myColor,
-        letterSpacing: 1,
-        fontWeight: FontWeight.w500);
+        letterSpacing: 0.5,
+        fontWeight: FontWeight.w700);
 
     return MaterialButton(
       padding: EdgeInsets.zero,

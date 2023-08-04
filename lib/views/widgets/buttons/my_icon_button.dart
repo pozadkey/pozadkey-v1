@@ -36,14 +36,16 @@ class _MyIconButtonState extends State<MyIconButton> {
           widget.initialColor = widget.hoverOutColor;
         });
       },
-      child: IconButton(
-          padding: EdgeInsets.zero,
-          icon: widget.icon,
-          color: widget.initialColor,
-          iconSize: 20,
-          onPressed: () {
-            widget.onPressed();
-          }),
+      child: Container(
+        child: IconButton(
+            padding: EdgeInsets.zero,
+            icon: widget.icon,
+            color: widget.initialColor,
+            iconSize: 20,
+            onPressed: () {
+              widget.onPressed();
+            }),
+      ),
     );
   }
 }

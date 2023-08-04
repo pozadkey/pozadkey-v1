@@ -31,7 +31,6 @@ class SelectButton extends StatefulWidget {
 class _SelectButtonState extends State<SelectButton> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
 
     return MouseRegion(
       onEnter: (m) {
