@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../widgets/buttons/link_icon.dart';
-import '../../../widgets/buttons/primary_button.dart';
+import '../../../widgets/buttons/primary_icon_button.dart';
 
 class ContactDesktop extends StatefulWidget {
-  ContactDesktop({
+  const ContactDesktop({
     Key? key,
   }) : super(key: key);
 
@@ -16,49 +16,22 @@ class ContactDesktop extends StatefulWidget {
 }
 
 class _ContactDesktopState extends State<ContactDesktop> {
-  void _launchEmail() async {
-    final url = Uri.parse('mailto:hello@pozadkey.com?subject=Hello');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  void _launchTwitter() async {
-    final url = Uri.parse('https://twitter.com/pozadkey');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  void _launchLinkedIn() async {
-    final url = Uri.parse('https://linkedin.com/in/damilare-ajakaiye');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
     final headerFont = TextStyle(
         fontSize: width >= 800 ? 70 : 35,
-        color: const Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(54, 54, 54, 1),
         fontWeight: FontWeight.w700,
-        letterSpacing: 0.5);
+        letterSpacing: 0.2);
 
     final introFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(255, 0, 0, 0),
-        fontWeight: FontWeight.w400,
+        color: Color.fromRGBO(117, 117, 117, 1),
+        fontWeight: FontWeight.w500,
         height: 2,
-        letterSpacing: 0.6);
+        letterSpacing: 0.2);
 
     openUrl(pageUrl) async {
       final url = Uri.parse(pageUrl);
@@ -106,17 +79,19 @@ class _ContactDesktopState extends State<ContactDesktop> {
                   height: 30,
                 ),
                 SizedBox(
-                    width: 300,
-                    child: PrimaryButton(
-                      title: 'hello@pozadkey.com',
-                      initalTextColor: Colors.white,
-                      hoverInBgColor: Color.fromARGB(255, 2, 185, 130),
-                      initialBgColor: Colors.black,
-                      hoverInColor: Colors.black,
-                      hoverOutBgColor: Colors.black,
-                      hoverOutColor: Colors.white,
-                      onPressed: _launchEmail,
-                    )),
+                    width: 200,
+                    child: PrimaryIconButton(
+                        title: 'hello@pozadkey.com',
+                        icon: FontAwesomeIcons.solidMessage,
+                        size: 15,
+                        initalTextColor: Colors.white,
+                        hoverInBgColor: Color.fromRGBO(117, 117, 117, 1),
+                        initialBgColor: Color.fromRGBO(54, 54, 54, 1),
+                        hoverInColor: Colors.white,
+                        hoverOutBgColor: Color.fromRGBO(54, 54, 54, 1),
+                        hoverOutColor: Colors.white,
+                        onPressed: () => openUrl(
+                            'mailto:hello@pozadkey.com?subject=Hello'))),
                 SizedBox(
                   height: 30,
                 ),
@@ -128,11 +103,11 @@ class _ContactDesktopState extends State<ContactDesktop> {
                       widthSize: 13.0,
                       bgColor: Colors.transparent,
                       bgColorOut: Colors.transparent,
-                      iconColor: Colors.black,
+                      iconColor: Color.fromRGBO(54, 54, 54, 1),
                       iconColorIn: Colors.white,
-                      iconColorOut: Colors.black,
+                      iconColorOut: Color.fromRGBO(54, 54, 54, 1),
                       icon: FontAwesomeIcons.linkedinIn,
-                      myColor: Colors.black,
+                      myColor: Color.fromRGBO(54, 54, 54, 1),
                       onPressed: () =>
                           openUrl('https://linkedin.com/in/damilare-ajakaiye'),
                     ),
@@ -143,11 +118,11 @@ class _ContactDesktopState extends State<ContactDesktop> {
                       widthSize: 13.0,
                       bgColor: Colors.transparent,
                       bgColorOut: Colors.transparent,
-                      iconColor: Colors.black,
+                      iconColor: Color.fromRGBO(54, 54, 54, 1),
                       iconColorIn: Colors.white,
-                      iconColorOut: Colors.black,
+                      iconColorOut: Color.fromRGBO(54, 54, 54, 1),
                       icon: FontAwesomeIcons.twitter,
-                      myColor: Colors.black,
+                      myColor: Color.fromRGBO(54, 54, 54, 1),
                       onPressed: () => openUrl('https://twitter.com/pozadkey'),
                     ),
                   ],

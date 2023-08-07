@@ -1,12 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../models/stack_model.dart';
 import '../../../widgets/buttons/primary_button.dart';
-import '../../../widgets/buttons/secondary_icon_button.dart';
 
 class AboutMobile extends StatefulWidget {
   const AboutMobile({Key? key}) : super(key: key);
@@ -22,21 +20,20 @@ class _AboutMobileState extends State<AboutMobile> {
 
     final headerFont = TextStyle(
         fontSize: width >= 800 ? 70 : 35,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(54, 54, 54, 1),
         fontWeight: FontWeight.w700,
-        letterSpacing: 0.5);
+        letterSpacing: 0.2);
 
-    final _introFont = TextStyle(
+    final introFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(117, 117, 117, 1),
         fontWeight: FontWeight.w500,
         height: 2,
-        letterSpacing: 0.6);
+        letterSpacing: 0.2);
 
     final stackFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(255, 2, 185, 130),
-        height: 1.5,
+        color: Color.fromRGBO(54, 54, 54, 1),
         letterSpacing: 0.3,
         fontWeight: FontWeight.w500);
 
@@ -73,7 +70,7 @@ class _AboutMobileState extends State<AboutMobile> {
               width: width >= 800 ? 700 : 700,
               child: Text(
                 'Hello! My name is Damilare and I\'m a self-taught software engineer who enjoys crafting web and mobile applications on the internet using Javascript and Flutter. Having a good understanding of Flutter, I\'m able to build scalable applications on the web and craft from development to deployment on Android and iOS platforms, while rendering server-side applications with Node.js. I\'m always on the look out for technical and professional opportunies to improve my skill-set and experience for building an outstanding User Experience.',
-                style: _introFont,
+                style: introFont,
                 textAlign: TextAlign.left,
               ),
             ),
@@ -83,12 +80,12 @@ class _AboutMobileState extends State<AboutMobile> {
             FittedBox(
               child: SizedBox(
                 child: PrimaryButton(
-                    title: 'View My Resume',
+                    title: 'View My Resume >',
                     initalTextColor: Colors.white,
-                    hoverInBgColor: Color.fromARGB(255, 2, 185, 130),
-                    initialBgColor: Color.fromRGBO(0, 8, 14, 1),
-                    hoverInColor: Colors.black,
-                    hoverOutBgColor: Colors.black,
+                    hoverInBgColor: Color.fromRGBO(117, 117, 117, 1),
+                    initialBgColor: Color.fromRGBO(54, 54, 54, 1),
+                    hoverInColor: Colors.white,
+                    hoverOutBgColor: Color.fromRGBO(54, 54, 54, 1),
                     hoverOutColor: Colors.white,
                     onPressed: () => openUrl(
                         'https://docs.google.com/document/d/1BYRWahLz8h9vvaDhzJEOKYsEBFVTO144_VZGHr-j-BA/edit?usp=sharing')),
@@ -101,7 +98,7 @@ class _AboutMobileState extends State<AboutMobile> {
               child: SizedBox(
                 child: Text(
                   'Some of the technologies I\'ve worked with:',
-                  style: _introFont,
+                  style: introFont,
                   textAlign: TextAlign.left,
                 ),
               ),
@@ -112,33 +109,29 @@ class _AboutMobileState extends State<AboutMobile> {
             SizedBox(
               child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: width >= 500 ? 3 : 2,
-                    crossAxisSpacing: 1,
-                    mainAxisSpacing: 1,
-                    childAspectRatio:
-                        width >= 200 && width <= 1200 ? 6 / 3 : 6 / 3,
-                  ),
+                      crossAxisCount: width >= 500 ? 7 : 4,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
+                      childAspectRatio: 2.1
+                      //width >= 200 && width <= 1200 ? 6 / 3 : 6 / 3,
+                      ),
                   itemCount: stackList.length,
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
                   itemBuilder: (BuildContext ctx, index) {
                     StackModel stacks = stackList[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FittedBox(
-                          child: SizedBox(
-                            width: width >= 800 ? 120 : 100,
-                            child: Text(
-                              stacks.title,
-                              style: stackFont,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
+                    return Container(
+                      //width: width >= 800 ? 120 : 100,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: stacks.textBgdColor,
+                          borderRadius: BorderRadius.circular(3.0)),
+                      child: Text(
+                        stacks.title,
+                        style: stackFont,
+                        textAlign: TextAlign.center,
+                      ),
                     );
                   }),
             )

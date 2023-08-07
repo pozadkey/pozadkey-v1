@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class PrimaryIconButton extends StatefulWidget {
   final String title;
-
+  IconData icon;
+  final double size;
   Color initalTextColor;
   Color initialBgColor;
   Color hoverInColor;
@@ -16,6 +17,8 @@ class PrimaryIconButton extends StatefulWidget {
   PrimaryIconButton(
       {Key? key,
       required this.title,
+      required this.icon,
+      required this.size,
       required this.initalTextColor,
       required this.initialBgColor,
       required this.hoverInColor,
@@ -33,12 +36,11 @@ class _PrimaryIconButtonState extends State<PrimaryIconButton> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
-    final _buttonFont = TextStyle(
+    final buttonFont = TextStyle(
         fontSize: 13,
         color: widget.initalTextColor,
-        letterSpacing: 1.5,
-        fontWeight: FontWeight.w600);
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.2);
 
     return MouseRegion(
       onEnter: (m) {
@@ -59,12 +61,18 @@ class _PrimaryIconButtonState extends State<PrimaryIconButton> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                widget.title.toUpperCase(),
-                style: _buttonFont,
+              Icon(
+                widget.icon,
+                color: widget.initalTextColor,
+                size: widget.size,
               ),
               SizedBox(
-                width: 7,
+                width: 6.5,
+              ),
+              Text(
+                widget.title,
+                style: buttonFont,
+                textAlign: TextAlign.center,
               ),
             ],
           ),
@@ -76,7 +84,7 @@ class _PrimaryIconButtonState extends State<PrimaryIconButton> {
           backgroundColor: widget.initialBgColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-              25.0,
+              3.0,
             ),
           ),
         ),

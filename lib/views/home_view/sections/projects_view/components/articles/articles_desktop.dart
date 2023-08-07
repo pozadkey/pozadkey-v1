@@ -3,11 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pozadkey/models/articles_model.dart';
-import 'package:pozadkey/models/mobile_projects_model.dart';
 import 'package:pozadkey/views/widgets/buttons/link_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../../../../models/web_projects_model.dart';
 
 class ArticlesDesktop extends StatefulWidget {
   const ArticlesDesktop({Key? key}) : super(key: key);
@@ -19,13 +16,11 @@ class ArticlesDesktop extends StatefulWidget {
 class _ArticlesDesktopState extends State<ArticlesDesktop> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-
     final imageFont = TextStyle(
-        fontSize: 40,
+        fontSize: 24,
         color: Colors.white,
-        fontWeight: FontWeight.w800,
-        letterSpacing: 0.5);
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.3);
 
     openUrl(pageUrl) async {
       final url = Uri.parse(pageUrl);
@@ -55,19 +50,18 @@ class _ArticlesDesktopState extends State<ArticlesDesktop> {
             children: [
               Container(
                 width: 500,
-                height: 270,
+                height: 300,
+                padding: EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1),
-                  color: Colors.black,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      articles.title.toUpperCase(),
-                      style: imageFont,
-                      textAlign: TextAlign.center,
-                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Color.fromRGBO(54, 54, 54, 1),
+                    border: Border.all(
+                        color: Color.fromRGBO(206, 206, 206, 0.459), width: 1)),
+                child: Center(
+                  child: Text(
+                    articles.title.toUpperCase(),
+                    style: imageFont,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
@@ -78,15 +72,12 @@ class _ArticlesDesktopState extends State<ArticlesDesktop> {
                 widthSize: 13.0,
                 bgColor: Colors.transparent,
                 bgColorOut: Colors.transparent,
-                iconColor: Colors.black,
+                iconColor: Color.fromRGBO(54, 54, 54, 1),
                 iconColorIn: Colors.white,
-                iconColorOut: Colors.black,
+                iconColorOut: Color.fromRGBO(54, 54, 54, 1),
                 icon: FontAwesomeIcons.arrowUpRightFromSquare,
-                myColor: Colors.black,
+                myColor: Color.fromRGBO(54, 54, 54, 1),
                 onPressed: () => openUrl(articles.live),
-              ),
-              SizedBox(
-                height: 10,
               ),
             ],
           );

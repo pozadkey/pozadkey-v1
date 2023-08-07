@@ -10,7 +10,6 @@ class LinkIcon extends StatefulWidget {
   Color iconColor;
   Color iconColorIn;
   Color iconColorOut;
-
   double widthSize;
   Color myColor;
   final Function onPressed;
@@ -34,8 +33,6 @@ class LinkIcon extends StatefulWidget {
 class _LinkIconState extends State<LinkIcon> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-
     return MouseRegion(
         onEnter: (m) {
           setState(() {
@@ -53,11 +50,12 @@ class _LinkIconState extends State<LinkIcon> {
           height: 25,
           width: 25,
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 2),
+              border:
+                  Border.all(color: Color.fromRGBO(54, 54, 54, 1), width: 2),
               color: widget.bgColor,
-              borderRadius: BorderRadius.circular(50.0)),
+              borderRadius: BorderRadius.circular(3.0)),
           child: IconButton(
-            padding: EdgeInsets.all(1.1),
+            padding: EdgeInsets.all(1.3),
             constraints: BoxConstraints(),
             onPressed: () {
               widget.onPressed();

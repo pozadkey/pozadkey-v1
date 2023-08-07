@@ -1,5 +1,5 @@
 name: pozadkey
-description: Pozadkey - Flutter & Backend Engineer.
+description: Pozadkey - Flutter & Backend Engineer
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -30,8 +30,6 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.1.0
-  carousel_slider: ^4.1.1
-  smooth_page_indicator: ^1.0.0+2
   url_launcher: ^6.1.4
   url_strategy: ^0.2.0
   intl: ^0.17.0
@@ -84,17 +82,17 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: SFUIText
+     - family: Outfit
        fonts:
-         - asset: assets/fonts/SFUIText-Bold.ttf
+         - asset: assets/fonts/Outfit-Bold.ttf
            weight: 700
-         - asset: assets/fonts/SFUIText-Semibold.ttf
+         - asset: assets/fonts/Outfit-Semibold.ttf
            weight: 600
-         - asset: assets/fonts/SFUIText-Heavy.ttf
-           weight: 900
-         - asset: assets/fonts/SFUIText-Medium.ttf
+         - asset: assets/fonts/Outfit-ExtraBold.ttf
+           weight: 800
+         - asset: assets/fonts/Outfit-Medium.ttf
            weight: 500 
-         - asset: assets/fonts/SFUIText-Regular.ttf
+         - asset: assets/fonts/Outfit-Regular.ttf
            weight: 400
          
          

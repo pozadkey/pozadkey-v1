@@ -16,30 +16,11 @@ class _ArticlesMobileState extends State<ArticlesMobile> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    final titleFont = TextStyle(
-        fontSize: 18,
-        color: Colors.black,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 0.3);
-
-    final textFont = TextStyle(
-        fontSize: 14,
-        color: Color.fromARGB(218, 0, 0, 0),
+    const imageFont = TextStyle(
+        fontSize: 20,
+        color: Colors.white,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.3);
-
-    final stackFont = TextStyle(
-        fontSize: 12,
-        color: Color.fromARGB(255, 2, 185, 130),
-        height: 1.5,
-        letterSpacing: 0.3,
-        fontWeight: FontWeight.w500);
-
-    final imageFont = TextStyle(
-        fontSize: 24,
-        color: Colors.white,
-        fontWeight: FontWeight.w800,
-        letterSpacing: 0.5);
 
     openUrl(pageUrl) async {
       final url = Uri.parse(pageUrl);
@@ -52,13 +33,13 @@ class _ArticlesMobileState extends State<ArticlesMobile> {
 
     return Container(
       padding: width >= 800
-          ? EdgeInsets.fromLTRB(110, 0, 110, 0)
-          : EdgeInsets.fromLTRB(0, 0, 0, 0),
+          ? const EdgeInsets.fromLTRB(110, 0, 110, 0)
+          : const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: ListView.builder(
           itemCount: articlesModelList.length,
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          physics: ScrollPhysics(),
+          physics: const ScrollPhysics(),
           itemBuilder: (context, index) {
             ArticlesModel articles = articlesModelList[index];
             return Column(
@@ -66,39 +47,39 @@ class _ArticlesMobileState extends State<ArticlesMobile> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  width: 500,
-                  height: 200,
+                  width: width < 478 ? 400 : 500,
+                  height: width < 478 ? 230 : 300,
+                  padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(1),
-                    color: Colors.black,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text(
-                        articles.title.toUpperCase(),
-                        style: imageFont,
-                        textAlign: TextAlign.center,
-                      ),
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: const Color.fromRGBO(54, 54, 54, 1),
+                      border: Border.all(
+                          color: const Color.fromRGBO(206, 206, 206, 0.459),
+                          width: 1)),
+                  child: Center(
+                    child: Text(
+                      articles.title.toUpperCase(),
+                      style: imageFont,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 LinkIcon(
                   widthSize: 13.0,
                   bgColor: Colors.transparent,
                   bgColorOut: Colors.transparent,
-                  iconColor: Colors.black,
+                  iconColor: const Color.fromRGBO(54, 54, 54, 1),
                   iconColorIn: Colors.white,
-                  iconColorOut: Colors.black,
+                  iconColorOut: const Color.fromRGBO(54, 54, 54, 1),
                   icon: FontAwesomeIcons.arrowUpRightFromSquare,
-                  myColor: Colors.black,
+                  myColor: const Color.fromRGBO(54, 54, 54, 1),
                   onPressed: () => openUrl(articles.live),
                 ),
-                SizedBox(
-                  height: 10,
+                const SizedBox(
+                  height: 30,
                 ),
               ],
             );

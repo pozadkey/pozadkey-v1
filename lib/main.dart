@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                fontFamily: 'SFUIText',
+                fontFamily: 'Outfit',
               ),
-              title: 'Pozadkey - Software Engineer | Web & Mobile',
+              title: 'Pozadkey - Flutter & Backend Engineer',
               initialRoute: '/',
               routes: <String, WidgetBuilder>{
                 '/': (BuildContext context) => HomeView(),

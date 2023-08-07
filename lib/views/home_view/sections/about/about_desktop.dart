@@ -1,12 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pozadkey/models/stack_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../widgets/buttons/primary_button.dart';
-import '../../../widgets/buttons/secondary_icon_button.dart';
 
 class AboutDesktop extends StatefulWidget {
   const AboutDesktop({Key? key}) : super(key: key);
@@ -22,21 +19,20 @@ class _AboutDesktopState extends State<AboutDesktop> {
 
     final headerFont = TextStyle(
         fontSize: width >= 800 ? 70 : 35,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(54, 54, 54, 1),
         fontWeight: FontWeight.w700,
-        letterSpacing: 0.5);
+        letterSpacing: 0.2);
 
-    final _introFont = TextStyle(
+    final introFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(117, 117, 117, 1),
         fontWeight: FontWeight.w500,
         height: 2,
-        letterSpacing: 0.6);
+        letterSpacing: 0.2);
 
     final stackFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(255, 2, 185, 130),
-        height: 1.5,
+        color: Color.fromRGBO(54, 54, 54, 1),
         letterSpacing: 0.3,
         fontWeight: FontWeight.w500);
 
@@ -80,7 +76,7 @@ class _AboutDesktopState extends State<AboutDesktop> {
                       width: 500,
                       child: Text(
                         'I\'m a self-taught software engineer who enjoys crafting web and mobile applications on the internet using Javascript and Flutter. Having a good understanding of Flutter, I\'m able to build scalable applications on the web and craft from development to deployment on Android and iOS platforms, while rendering server-side applications with Node.js. I\'m always on the look out for technical and professional opportunies to improve my skill-set and experience for building an outstanding User Experience.',
-                        style: _introFont,
+                        style: introFont,
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -88,14 +84,14 @@ class _AboutDesktopState extends State<AboutDesktop> {
                       height: 40,
                     ),
                     SizedBox(
-                        width: 220,
+                        width: 180,
                         child: PrimaryButton(
-                            title: 'View My Resume',
+                            title: 'View My Resume >',
                             initalTextColor: Colors.white,
-                            hoverInBgColor: Color.fromARGB(255, 2, 185, 130),
-                            initialBgColor: Color.fromRGBO(0, 8, 14, 1),
-                            hoverInColor: Colors.black,
-                            hoverOutBgColor: Colors.black,
+                            hoverInBgColor: Color.fromRGBO(117, 117, 117, 1),
+                            initialBgColor: Color.fromRGBO(54, 54, 54, 1),
+                            hoverInColor: Colors.white,
+                            hoverOutBgColor: Color.fromRGBO(54, 54, 54, 1),
                             hoverOutColor: Colors.white,
                             onPressed: () => openUrl(
                                 'https://docs.google.com/document/d/1BYRWahLz8h9vvaDhzJEOKYsEBFVTO144_VZGHr-j-BA/edit?usp=sharing'))),
@@ -114,7 +110,7 @@ class _AboutDesktopState extends State<AboutDesktop> {
                   children: [
                     Text(
                       'Some of the technologies I\'ve worked with:',
-                      style: _introFont,
+                      style: introFont,
                       textAlign: TextAlign.left,
                     ),
                     SizedBox(
@@ -123,8 +119,8 @@ class _AboutDesktopState extends State<AboutDesktop> {
                     GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 4,
-                            crossAxisSpacing: 2,
-                            mainAxisSpacing: 2,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
                             childAspectRatio: 5),
                         itemCount: stackList.length,
                         scrollDirection: Axis.vertical,
@@ -132,16 +128,16 @@ class _AboutDesktopState extends State<AboutDesktop> {
                         physics: ScrollPhysics(),
                         itemBuilder: (BuildContext ctx, index) {
                           StackModel stacks = stackList[index];
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                stacks.title,
-                                style: stackFont,
-                                textAlign: TextAlign.left,
-                              ),
-                            ],
+                          return Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                color: stacks.textBgdColor,
+                                borderRadius: BorderRadius.circular(3.0)),
+                            child: Text(
+                              stacks.title,
+                              style: stackFont,
+                              textAlign: TextAlign.center,
+                            ),
                           );
                         }),
                   ],

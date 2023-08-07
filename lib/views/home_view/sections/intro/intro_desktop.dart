@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../../../widgets/buttons/primary_button.dart';
-import '../../../widgets/buttons/secondary_icon_button.dart';
 
 class IntroDesktop extends StatefulWidget {
   var projectsKey = GlobalKey();
@@ -19,37 +18,18 @@ class _IntroDesktopState extends State<IntroDesktop> {
 
     final headerFont = TextStyle(
         fontSize: width >= 800 ? 70 : 35,
-        color: const Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(54, 54, 54, 1),
         fontWeight: FontWeight.w700,
-        letterSpacing: 0.5);
-
-    final headerFont2 = TextStyle(
-        fontSize: width >= 800 ? 50 : 35,
-        color: Color.fromARGB(255, 202, 205, 212),
-        fontWeight: FontWeight.w800,
-        letterSpacing: 0.5);
-
-    final subIntroFont = TextStyle(
-        fontSize: 12,
-        color: Color.fromARGB(255, 202, 205, 212),
-        letterSpacing: 0.3,
-        fontWeight: FontWeight.w500);
+        letterSpacing: 0.2);
 
     final introFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(117, 117, 117, 1),
         fontWeight: FontWeight.w500,
         height: 2,
-        letterSpacing: 0.6);
+        letterSpacing: 0.2);
 
-    final introFont2 = TextStyle(
-        fontSize: 14,
-        height: 2,
-        color: Color.fromARGB(255, 233, 231, 231),
-        fontWeight: FontWeight.w500,
-        letterSpacing: 0.6);
-
-    return Container(
+    return SizedBox(
       height: 700,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -77,7 +57,7 @@ class _IntroDesktopState extends State<IntroDesktop> {
                   width: 650,
                   child: Center(
                       child: Text(
-                    'I\'m Damilare Ajakaiye,a web & mobile engineer who loves to craft suitable experiences for the web. I\'m focused on building more accessible products and opportunities to collaborate with diverse industries around the world. ',
+                    'I\'m Damilare Ajakaiye, a software engineer who enjoys crafting suitable web and mobile experiences for users. I\'m focused on building more accessible products and opportunities to collaborate with diverse industries around the world. ',
                     style: introFont,
                     textAlign: TextAlign.center,
                   )),
@@ -86,14 +66,14 @@ class _IntroDesktopState extends State<IntroDesktop> {
                   height: 30,
                 ),
                 SizedBox(
-                    width: 300,
+                    width: 200,
                     child: PrimaryButton(
                       title: 'Explore Projects >',
                       initalTextColor: Colors.white,
-                      hoverInBgColor: Color.fromARGB(255, 2, 185, 130),
-                      initialBgColor: Colors.black,
-                      hoverInColor: Colors.black,
-                      hoverOutBgColor: Colors.black,
+                      hoverInBgColor: Color.fromRGBO(117, 117, 117, 1),
+                      initialBgColor: Color.fromRGBO(54, 54, 54, 1),
+                      hoverInColor: Colors.white,
+                      hoverOutBgColor: Color.fromRGBO(54, 54, 54, 1),
                       hoverOutColor: Colors.white,
                       onPressed: () => Scrollable.ensureVisible(
                           widget.projectsKey.currentContext!,
@@ -101,9 +81,6 @@ class _IntroDesktopState extends State<IntroDesktop> {
                           duration: Duration(seconds: 1),
                           curve: Curves.ease),
                     )),
-                SizedBox(
-                  height: 30,
-                ),
               ],
             ),
           )

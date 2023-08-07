@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pozadkey/views/home_view/sections/projects_view/components/articles/articles.dart';
 import 'package:pozadkey/views/home_view/sections/projects_view/components/mobile_projects/mobile_projects.dart';
 import 'package:pozadkey/views/widgets/buttons/secondary_icon_button.dart';
-import '../../../widgets/buttons/primary_button.dart';
 import 'components/web_projects/web_projects.dart';
 
 class ProjectsTabDesktop extends StatefulWidget {
@@ -34,15 +33,14 @@ class _ProjectsTabDesktopState extends State<ProjectsTabDesktop> {
 
     final headerFont = TextStyle(
         fontSize: width >= 800 ? 70 : 35,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(54, 54, 54, 1),
         fontWeight: FontWeight.w700,
-        letterSpacing: 0.5);
+        letterSpacing: 0.2);
 
     return Container(
       padding: width <= 1550
           ? EdgeInsets.fromLTRB(50, 15, 50, 15)
           : EdgeInsets.fromLTRB(200, 15, 200, 15),
-      //height: 1000,
       width: 2000,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -62,15 +60,23 @@ class _ProjectsTabDesktopState extends State<ProjectsTabDesktop> {
           Row(
             children: [
               SizedBox(
-                width: 100,
+                width: 98,
                 child: SecondaryIconButton(
                   title: 'Web',
-                  bgColor: isWeb == true ? Colors.black : Colors.transparent,
-                  bgColorOut: isWeb == true ? Colors.black : Colors.transparent,
-                  titleColor: isWeb == true ? Colors.white : Colors.black,
+                  bgColor: isWeb == true
+                      ? Color.fromRGBO(54, 54, 54, 1)
+                      : Colors.transparent,
+                  bgColorOut: isWeb == true
+                      ? Color.fromRGBO(54, 54, 54, 1)
+                      : Colors.transparent,
+                  titleColor: isWeb == true
+                      ? Colors.white
+                      : Color.fromRGBO(54, 54, 54, 1),
                   titleColorIn: Colors.white,
-                  titleColorOut: isWeb == true ? Colors.white : Colors.black,
-                  myColor: Colors.black,
+                  titleColorOut: isWeb == true
+                      ? Colors.white
+                      : Color.fromRGBO(54, 54, 54, 1),
+                  myColor: Color.fromRGBO(54, 54, 54, 1),
                   onPressed: () {
                     setState(() {
                       defaultProj = webProj;
@@ -85,16 +91,23 @@ class _ProjectsTabDesktopState extends State<ProjectsTabDesktop> {
                 width: 10,
               ),
               SizedBox(
-                width: 100,
+                width: 98,
                 child: SecondaryIconButton(
                   title: 'Mobile',
-                  bgColor: isMobile == true ? Colors.black : Colors.transparent,
-                  bgColorOut:
-                      isMobile == true ? Colors.black : Colors.transparent,
-                  titleColor: isMobile == true ? Colors.white : Colors.black,
+                  bgColor: isMobile == true
+                      ? Color.fromRGBO(54, 54, 54, 1)
+                      : Colors.transparent,
+                  bgColorOut: isMobile == true
+                      ? Color.fromRGBO(54, 54, 54, 1)
+                      : Colors.transparent,
+                  titleColor: isMobile == true
+                      ? Colors.white
+                      : Color.fromRGBO(54, 54, 54, 1),
                   titleColorIn: Colors.white,
-                  titleColorOut: isMobile == true ? Colors.white : Colors.black,
-                  myColor: Colors.black,
+                  titleColorOut: isMobile == true
+                      ? Colors.white
+                      : Color.fromRGBO(54, 54, 54, 1),
+                  myColor: Color.fromRGBO(54, 54, 54, 1),
                   onPressed: () {
                     setState(() {
                       defaultProj = mobileProj;
@@ -109,18 +122,23 @@ class _ProjectsTabDesktopState extends State<ProjectsTabDesktop> {
                 width: 10,
               ),
               SizedBox(
-                width: 110,
+                width: 98,
                 child: SecondaryIconButton(
                   title: 'Articles',
-                  bgColor:
-                      isArticle == true ? Colors.black : Colors.transparent,
-                  bgColorOut:
-                      isArticle == true ? Colors.black : Colors.transparent,
-                  titleColor: isArticle == true ? Colors.white : Colors.black,
+                  bgColor: isArticle == true
+                      ? Color.fromRGBO(54, 54, 54, 1)
+                      : Colors.transparent,
+                  bgColorOut: isArticle == true
+                      ? Color.fromRGBO(54, 54, 54, 1)
+                      : Colors.transparent,
+                  titleColor: isArticle == true
+                      ? Colors.white
+                      : Color.fromRGBO(54, 54, 54, 1),
                   titleColorIn: Colors.white,
-                  titleColorOut:
-                      isArticle == true ? Colors.white : Colors.black,
-                  myColor: Colors.black,
+                  titleColorOut: isArticle == true
+                      ? Colors.white
+                      : Color.fromRGBO(54, 54, 54, 1),
+                  myColor: Color.fromRGBO(54, 54, 54, 1),
                   onPressed: () {
                     setState(() {
                       defaultProj = articleProj;

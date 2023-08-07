@@ -6,8 +6,6 @@ import 'package:pozadkey/models/mobile_projects_model.dart';
 import 'package:pozadkey/views/widgets/buttons/link_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../../../models/web_projects_model.dart';
-
 class MobileProjectsDesktop extends StatefulWidget {
   const MobileProjectsDesktop({Key? key}) : super(key: key);
 
@@ -18,33 +16,29 @@ class MobileProjectsDesktop extends StatefulWidget {
 class _MobileProjectsDesktopState extends State<MobileProjectsDesktop> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-
     final titleFont = TextStyle(
-        fontSize: 24,
-        color: Colors.black,
+        fontSize: 18,
+        color: Color.fromRGBO(54, 54, 54, 1),
         fontWeight: FontWeight.w600,
-        letterSpacing: 0.3);
+        letterSpacing: 0.2);
 
     final textFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(218, 0, 0, 0),
+        color: Color.fromRGBO(117, 117, 117, 1),
         fontWeight: FontWeight.w500,
-        letterSpacing: 0.3);
+        letterSpacing: 0.2);
 
     final stackFont = TextStyle(
-        fontSize: 12,
-        color: Color.fromARGB(255, 2, 185, 130),
-        // color: Colors.white,
-        height: 1.5,
+        fontSize: 14,
+        color: Color.fromRGBO(54, 54, 54, 1),
         letterSpacing: 0.3,
         fontWeight: FontWeight.w500);
 
     final imageFont = TextStyle(
-        fontSize: 50,
+        fontSize: 24,
         color: Colors.white,
-        fontWeight: FontWeight.w800,
-        letterSpacing: 0.5);
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.3);
 
     openUrl(pageUrl) async {
       final url = Uri.parse(pageUrl);
@@ -75,11 +69,14 @@ class _MobileProjectsDesktopState extends State<MobileProjectsDesktop> {
               mobileProjects.image.isEmpty
                   ? Container(
                       width: 500,
-                      height: 270,
+                      height: 300,
+                      padding: EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(1),
-                        color: Colors.black,
-                      ),
+                          borderRadius: BorderRadius.circular(15.0),
+                          color: Color.fromRGBO(54, 54, 54, 1),
+                          border: Border.all(
+                              color: Color.fromRGBO(206, 206, 206, 0.459),
+                              width: 1)),
                       child: Center(
                         child: Text(
                           mobileProjects.title.toUpperCase(),
@@ -90,25 +87,32 @@ class _MobileProjectsDesktopState extends State<MobileProjectsDesktop> {
                     )
                   : Container(
                       width: 500,
-                      height: 270,
+                      height: 300,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(mobileProjects.image),
-                            fit: BoxFit.fill),
-                        borderRadius: BorderRadius.circular(1),
-                        color: Colors.white,
-                      ),
+                          image: DecorationImage(
+                              image: AssetImage(mobileProjects.image),
+                              fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(15.0),
+                          border: Border.all(
+                              color: Color.fromRGBO(206, 206, 206, 0.459),
+                              width: 1)),
                     ),
               SizedBox(
                 height: 10,
               ),
-              Text(
-                mobileProjects.stack,
-                style: stackFont,
-                textAlign: TextAlign.start,
+              Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(206, 206, 206, 0.699),
+                    borderRadius: BorderRadius.circular(3.0)),
+                child: Text(
+                  mobileProjects.stack,
+                  style: stackFont,
+                  textAlign: TextAlign.start,
+                ),
               ),
               SizedBox(
-                height: 5,
+                height: 10,
               ),
               Text(
                 mobileProjects.title,
@@ -136,11 +140,11 @@ class _MobileProjectsDesktopState extends State<MobileProjectsDesktop> {
                           widthSize: 13.0,
                           bgColor: Colors.transparent,
                           bgColorOut: Colors.transparent,
-                          iconColor: Colors.black,
+                          iconColor: Color.fromRGBO(54, 54, 54, 1),
                           iconColorIn: Colors.white,
-                          iconColorOut: Colors.black,
+                          iconColorOut: Color.fromRGBO(54, 54, 54, 1),
                           icon: FontAwesomeIcons.googlePlay,
-                          myColor: Colors.black,
+                          myColor: Color.fromRGBO(54, 54, 54, 1),
                           onPressed: () => openUrl(mobileProjects.playstore),
                         ),
                         SizedBox(
@@ -150,11 +154,11 @@ class _MobileProjectsDesktopState extends State<MobileProjectsDesktop> {
                           widthSize: 13.0,
                           bgColor: Colors.transparent,
                           bgColorOut: Colors.transparent,
-                          iconColor: Colors.black,
+                          iconColor: Color.fromRGBO(54, 54, 54, 1),
                           iconColorIn: Colors.white,
-                          iconColorOut: Colors.black,
+                          iconColorOut: Color.fromRGBO(54, 54, 54, 1),
                           icon: FontAwesomeIcons.appStoreIos,
-                          myColor: Colors.black,
+                          myColor: Color.fromRGBO(54, 54, 54, 1),
                           onPressed: () => openUrl(mobileProjects.appstore),
                         ),
                       ],
@@ -167,11 +171,11 @@ class _MobileProjectsDesktopState extends State<MobileProjectsDesktop> {
                           widthSize: 13.0,
                           bgColor: Colors.transparent,
                           bgColorOut: Colors.transparent,
-                          iconColor: Colors.black,
+                          iconColor: Color.fromRGBO(54, 54, 54, 1),
                           iconColorIn: Colors.white,
-                          iconColorOut: Colors.black,
+                          iconColorOut: Color.fromRGBO(54, 54, 54, 1),
                           icon: FontAwesomeIcons.github,
-                          myColor: Colors.black,
+                          myColor: Color.fromRGBO(54, 54, 54, 1),
                           onPressed: () => openUrl(mobileProjects.github),
                         ),
                         SizedBox(
@@ -181,11 +185,11 @@ class _MobileProjectsDesktopState extends State<MobileProjectsDesktop> {
                           widthSize: 13.0,
                           bgColor: Colors.transparent,
                           bgColorOut: Colors.transparent,
-                          iconColor: Colors.black,
+                          iconColor: Color.fromRGBO(54, 54, 54, 1),
                           iconColorIn: Colors.white,
-                          iconColorOut: Colors.black,
+                          iconColorOut: Color.fromRGBO(54, 54, 54, 1),
                           icon: FontAwesomeIcons.googlePlay,
-                          myColor: Colors.black,
+                          myColor: Color.fromRGBO(54, 54, 54, 1),
                           onPressed: () => openUrl(mobileProjects.playstore),
                         ),
                         SizedBox(
@@ -195,11 +199,11 @@ class _MobileProjectsDesktopState extends State<MobileProjectsDesktop> {
                           widthSize: 13.0,
                           bgColor: Colors.transparent,
                           bgColorOut: Colors.transparent,
-                          iconColor: Colors.black,
+                          iconColor: Color.fromRGBO(54, 54, 54, 1),
                           iconColorIn: Colors.white,
-                          iconColorOut: Colors.black,
+                          iconColorOut: Color.fromRGBO(54, 54, 54, 1),
                           icon: FontAwesomeIcons.appStoreIos,
-                          myColor: Colors.black,
+                          myColor: Color.fromRGBO(54, 54, 54, 1),
                           onPressed: () => openUrl(mobileProjects.appstore),
                         ),
                       ],

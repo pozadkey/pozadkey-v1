@@ -17,30 +17,29 @@ class _WebProjectsMobileState extends State<WebProjectsMobile> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    final titleFont = TextStyle(
+    const titleFont = TextStyle(
         fontSize: 18,
-        color: Colors.black,
+        color: Color.fromRGBO(54, 54, 54, 1),
         fontWeight: FontWeight.w600,
-        letterSpacing: 0.3);
+        letterSpacing: 0.2);
 
-    final textFont = TextStyle(
+    const textFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(218, 0, 0, 0),
+        color: Color.fromRGBO(117, 117, 117, 1),
         fontWeight: FontWeight.w500,
-        letterSpacing: 0.3);
+        letterSpacing: 0.2);
 
-    final stackFont = TextStyle(
-        fontSize: 12,
-        color: Color.fromARGB(255, 2, 185, 130),
-        height: 1.5,
+    const stackFont = TextStyle(
+        fontSize: 14,
+        color: Color.fromRGBO(54, 54, 54, 1),
         letterSpacing: 0.3,
         fontWeight: FontWeight.w500);
 
-    final imageFont = TextStyle(
-        fontSize: 50,
+    const imageFont = TextStyle(
+        fontSize: 20,
         color: Colors.white,
-        fontWeight: FontWeight.w800,
-        letterSpacing: 0.5);
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.3);
 
     openUrl(pageUrl) async {
       final url = Uri.parse(pageUrl);
@@ -51,140 +50,154 @@ class _WebProjectsMobileState extends State<WebProjectsMobile> {
       }
     }
 
-    return Container(
-      child: ListView.builder(
-        itemCount: webProjectsModelList.length,
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        physics: ScrollPhysics(),
-        itemBuilder: (context, index) {
-          WebProjectsModel webProjects = webProjectsModelList[index];
-          return Container(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
-            width: width >= 800 ? 500 : double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                webProjects.image.isEmpty
-                    ? Container(
-                        width: 500,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(1),
-                          color: Colors.black,
-                        ),
-                        child: Center(
-                          child: Text(
-                            webProjects.title.toUpperCase(),
-                            style: imageFont,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      )
-                    : Container(
-                        width: 500,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(webProjects.image),
-                              fit: BoxFit.fill),
-                          borderRadius: BorderRadius.circular(1),
-                          color: Colors.white,
+    return ListView.builder(
+      itemCount: webProjectsModelList.length,
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      physics: const ScrollPhysics(),
+      itemBuilder: (context, index) {
+        WebProjectsModel webProjects = webProjectsModelList[index];
+        return SizedBox(
+          width: width >= 800 ? 500 : double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              webProjects.image.isEmpty
+                  ? Container(
+                      width: width < 478 ? 400 : 500,
+                      height: width < 478 ? 230 : 300,
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.0),
+                          color: const Color.fromRGBO(54, 54, 54, 1),
+                          border: Border.all(
+                              color: const Color.fromRGBO(114, 79, 79, 0.459),
+                              width: 1)),
+                      child: Center(
+                        child: Text(
+                          webProjects.title.toUpperCase(),
+                          style: imageFont,
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                SizedBox(
-                  height: 10,
+                    )
+                  : Container(
+                      width: width < 478 ? 400 : 500,
+                      height: width < 478 ? 230 : 300,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(webProjects.image),
+                              fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(15.0),
+                          border: Border.all(
+                              color: const Color.fromRGBO(206, 206, 206, 0.459),
+                              width: 1)),
+                    ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: 500,
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: const Color.fromRGBO(206, 206, 206, 0.699),
+                          borderRadius: BorderRadius.circular(3.0)),
+                      child: Text(
+                        webProjects.stack,
+                        style: stackFont,
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: 500,
+                child: Text(
+                  webProjects.title,
+                  style: titleFont,
+                  textAlign: TextAlign.start,
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                width: 500,
+                child: Text(
+                  webProjects.info,
+                  style: textFont,
+                  textAlign: TextAlign.start,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
                   width: 500,
-                  child: Text(
-                    webProjects.stack,
-                    style: stackFont,
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 500,
-                  child: Text(
-                    webProjects.title,
-                    style: titleFont,
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 500,
-                  child: Text(
-                    webProjects.info,
-                    style: textFont,
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                    width: 500,
-                    child: webProjects.github.isEmpty
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              LinkIcon(
-                                widthSize: 13.0,
-                                bgColor: Colors.transparent,
-                                bgColorOut: Colors.transparent,
-                                iconColor: Colors.black,
-                                iconColorIn: Colors.white,
-                                iconColorOut: Colors.black,
-                                icon: FontAwesomeIcons.arrowUpRightFromSquare,
-                                myColor: Colors.black,
-                                onPressed: () => openUrl(webProjects.live),
-                              ),
-                            ],
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              LinkIcon(
-                                widthSize: 13.0,
-                                bgColor: Colors.transparent,
-                                bgColorOut: Colors.transparent,
-                                iconColor: Colors.black,
-                                iconColorIn: Colors.white,
-                                iconColorOut: Colors.black,
-                                icon: FontAwesomeIcons.github,
-                                myColor: Colors.black,
-                                onPressed: () => openUrl(webProjects.github),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              LinkIcon(
-                                widthSize: 13.0,
-                                bgColor: Colors.transparent,
-                                bgColorOut: Colors.transparent,
-                                iconColor: Colors.black,
-                                iconColorIn: Colors.white,
-                                iconColorOut: Colors.black,
-                                icon: FontAwesomeIcons.arrowUpRightFromSquare,
-                                myColor: Colors.black,
-                                onPressed: () => openUrl(webProjects.live),
-                              ),
-                            ],
-                          )),
-              ],
-            ),
-          );
-        },
-      ),
+                  child: webProjects.github.isEmpty
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            LinkIcon(
+                              widthSize: 13.0,
+                              bgColor: Colors.transparent,
+                              bgColorOut: Colors.transparent,
+                              iconColor: const Color.fromRGBO(54, 54, 54, 1),
+                              iconColorIn: Colors.white,
+                              iconColorOut: const Color.fromRGBO(54, 54, 54, 1),
+                              icon: FontAwesomeIcons.arrowUpRightFromSquare,
+                              myColor: const Color.fromRGBO(54, 54, 54, 1),
+                              onPressed: () => openUrl(webProjects.live),
+                            ),
+                          ],
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            LinkIcon(
+                              widthSize: 13.0,
+                              bgColor: Colors.transparent,
+                              bgColorOut: Colors.transparent,
+                              iconColor: const Color.fromRGBO(54, 54, 54, 1),
+                              iconColorIn: Colors.white,
+                              iconColorOut: const Color.fromRGBO(54, 54, 54, 1),
+                              icon: FontAwesomeIcons.github,
+                              myColor: const Color.fromRGBO(54, 54, 54, 1),
+                              onPressed: () => openUrl(webProjects.github),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            LinkIcon(
+                              widthSize: 13.0,
+                              bgColor: Colors.transparent,
+                              bgColorOut: Colors.transparent,
+                              iconColor: const Color.fromRGBO(54, 54, 54, 1),
+                              iconColorIn: Colors.white,
+                              iconColorOut: const Color.fromRGBO(54, 54, 54, 1),
+                              icon: FontAwesomeIcons.arrowUpRightFromSquare,
+                              myColor: const Color.fromRGBO(54, 54, 54, 1),
+                              onPressed: () => openUrl(webProjects.live),
+                            ),
+                          ],
+                        )),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

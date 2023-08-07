@@ -5,7 +5,7 @@ import 'package:pozadkey/views/home_view/sections/projects_view/components/web_p
 import 'package:pozadkey/views/home_view/sections/projects_view/components/web_projects/web_projects_mobile.dart';
 
 class WebProjects extends StatefulWidget {
-  WebProjects({
+  const WebProjects({
     Key? key,
   }) : super(key: key);
 

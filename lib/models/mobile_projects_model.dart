@@ -19,10 +19,10 @@ class MobileProjectsModel {
 List<MobileProjectsModel> mobileProjectsList = [
   MobileProjectsModel(
       title: 'OOU-LLB21',
-      image: 'assets/images/oou-llb-21-iphone.png',
+      image: 'assets/images/oou-llb.JPG',
       info:
           'A yearbook application built for a university\'s law faculty.  Built for Android and iOS platforms, it displays hard-coded data about the faculty and its students.',
-      stack: 'Android  iOS  Flutter',
+      stack: 'Flutter',
       playstore:
           'https://play.google.com/store/apps/details?id=com.pozadkey.oou_llb_21',
       appstore: 'https://apps.apple.com/ng/app/oou-llb21/id1632992447',

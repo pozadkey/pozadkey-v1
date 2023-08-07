@@ -2,8 +2,7 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../buttons/navbar_button.dart';
-import '../buttons/primary_button.dart';
+import 'navbar_button.dart';
 import '../buttons/primary_icon_button.dart';
 import '../buttons/secondary_icon_button.dart';
 import 'navbar_items.dart';
@@ -37,21 +36,6 @@ openUrl(pageUrl) async {
   }
 }
 
-void _launchEmail() async {
-  final url = Uri.parse('mailto:hello@pozadkey.com?subject=Hello');
-  if (await canLaunchUrl(url)) {
-    await launchUrl(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
-void resumeLink() {
-  final url = Uri.parse(
-      'https://docs.google.com/document/d/1BYRWahLz8h9vvaDhzJEOKYsEBFVTO144_VZGHr-j-BA/edit?usp=sharing');
-  launchUrl(url);
-}
-
 class _NavBarMobileState extends State<NavBarMobile> {
   bool _isVisible = false;
 
@@ -70,7 +54,7 @@ class _NavBarMobileState extends State<NavBarMobile> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NavLogo(
-                myColor: Colors.black,
+                myColor: Color.fromRGBO(54, 54, 54, 1),
                 logoTextSize: width <= 340 ? 15 : 18,
                 iconsSize: width <= 340 ? 15 : 18,
               ),
@@ -90,8 +74,8 @@ class _NavBarMobileState extends State<NavBarMobile> {
                   }
                 },
                 hamburgerColor: _isVisible == false
-                    ? Colors.black
-                    : Color.fromARGB(255, 2, 185, 130),
+                    ? Color.fromRGBO(54, 54, 54, 1)
+                    : Color.fromRGBO(117, 117, 117, 1),
               )
             ],
           ),
@@ -132,9 +116,9 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                     curve: Curves.ease);
                               },
                               title: 'Home',
-                              initialColor: Colors.black,
-                              hoverColorIn: Color.fromARGB(255, 2, 185, 130),
-                              hoverColorOut: Colors.black),
+                              initialColor: Color.fromRGBO(54, 54, 54, 1),
+                              hoverColorIn: Color.fromRGBO(117, 117, 117, 1),
+                              hoverColorOut: Color.fromRGBO(54, 54, 54, 1)),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -151,9 +135,9 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                     curve: Curves.ease);
                               },
                               title: 'About',
-                              initialColor: Colors.black,
-                              hoverColorIn: Color.fromARGB(255, 2, 185, 130),
-                              hoverColorOut: Colors.black),
+                              initialColor: Color.fromRGBO(54, 54, 54, 1),
+                              hoverColorIn: Color.fromRGBO(117, 117, 117, 1),
+                              hoverColorOut: Color.fromRGBO(54, 54, 54, 1)),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -170,9 +154,9 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                     curve: Curves.ease);
                               },
                               title: 'Projects',
-                              initialColor: Colors.black,
-                              hoverColorIn: Color.fromARGB(255, 2, 185, 130),
-                              hoverColorOut: Colors.black),
+                              initialColor: Color.fromRGBO(54, 54, 54, 1),
+                              hoverColorIn: Color.fromRGBO(117, 117, 117, 1),
+                              hoverColorOut: Color.fromRGBO(54, 54, 54, 1)),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -182,15 +166,22 @@ class _NavBarMobileState extends State<NavBarMobile> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SecondaryIconButton(
-                                      title: 'View My Resume',
+                                      title: 'View My Resume >',
                                       bgColor: Colors.transparent,
                                       bgColorOut: Colors.transparent,
-                                      titleColor: Colors.black,
+                                      titleColor: Color.fromRGBO(54, 54, 54, 1),
                                       titleColorIn: Colors.white,
-                                      titleColorOut: Colors.black,
-                                      myColor: Colors.black,
-                                      onPressed: () => openUrl(
-                                          'https://docs.google.com/document/d/1BYRWahLz8h9vvaDhzJEOKYsEBFVTO144_VZGHr-j-BA/edit?usp=sharing')),
+                                      titleColorOut:
+                                          Color.fromRGBO(54, 54, 54, 1),
+                                      myColor: Color.fromRGBO(54, 54, 54, 1),
+                                      onPressed: () {
+                                        setState(() {
+                                          _isVisible = false;
+                                          myMenu = FontAwesomeIcons.bars;
+                                        });
+                                        openUrl(
+                                            'https://docs.google.com/document/d/1BYRWahLz8h9vvaDhzJEOKYsEBFVTO144_VZGHr-j-BA/edit?usp=sharing');
+                                      }),
                                 ],
                               )),
                           SizedBox(
@@ -201,14 +192,18 @@ class _NavBarMobileState extends State<NavBarMobile> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  PrimaryButton(
+                                  PrimaryIconButton(
                                     title: 'Chat With Me',
+                                    icon: FontAwesomeIcons.solidMessage,
+                                    size: 15,
                                     initalTextColor: Colors.white,
                                     hoverInBgColor:
-                                        Color.fromARGB(255, 2, 185, 130),
-                                    initialBgColor: Colors.black,
-                                    hoverInColor: Colors.black,
-                                    hoverOutBgColor: Colors.black,
+                                        Color.fromRGBO(117, 117, 117, 1),
+                                    initialBgColor:
+                                        Color.fromRGBO(54, 54, 54, 1),
+                                    hoverInColor: Colors.white,
+                                    hoverOutBgColor:
+                                        Color.fromRGBO(54, 54, 54, 1),
                                     hoverOutColor: Colors.white,
                                     onPressed: () {
                                       setState(() {

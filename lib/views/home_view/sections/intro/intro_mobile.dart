@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../../../widgets/buttons/primary_button.dart';
-import '../../../widgets/buttons/secondary_icon_button.dart';
 
 class IntroMobile extends StatefulWidget {
   var projectsKey = GlobalKey();
@@ -19,16 +18,16 @@ class _IntroMobileState extends State<IntroMobile> {
 
     final headerFont = TextStyle(
         fontSize: width >= 800 ? 70 : 35,
-        color: const Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(54, 54, 54, 1),
         fontWeight: FontWeight.w700,
-        letterSpacing: 0.5);
+        letterSpacing: 0.2);
 
     final introFont = TextStyle(
         fontSize: 14,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: Color.fromRGBO(117, 117, 117, 1),
         fontWeight: FontWeight.w500,
         height: 2,
-        letterSpacing: 0.6);
+        letterSpacing: 0.2);
 
     return SizedBox(
       width: double.infinity,
@@ -58,7 +57,7 @@ class _IntroMobileState extends State<IntroMobile> {
                   width: 650,
                   child: Center(
                       child: Text(
-                    'I\'m Damilare Ajakaiye,a web & mobile engineer who loves to craft suitable experiences for the web. I\'m focused on building more accessible products and opportunities to collaborate with diverse industries around the world. ',
+                    'I\'m Damilare Ajakaiye, a software engineer who enjoys crafting suitable web and mobile experiences for users. I\'m focused on building more accessible products and opportunities to collaborate with diverse industries around the world. ',
                     style: introFont,
                     textAlign: TextAlign.center,
                   )),
@@ -67,14 +66,14 @@ class _IntroMobileState extends State<IntroMobile> {
                   height: 30,
                 ),
                 SizedBox(
-                    width: 300,
+                    width: 200,
                     child: PrimaryButton(
                       title: 'Explore Projects >',
                       initalTextColor: Colors.white,
-                      hoverInBgColor: Color.fromARGB(255, 2, 185, 130),
-                      initialBgColor: Colors.black,
-                      hoverInColor: Colors.black,
-                      hoverOutBgColor: Colors.black,
+                      hoverInBgColor: Color.fromRGBO(117, 117, 117, 1),
+                      initialBgColor: Color.fromRGBO(54, 54, 54, 1),
+                      hoverInColor: Colors.white,
+                      hoverOutBgColor: Color.fromRGBO(54, 54, 54, 1),
                       hoverOutColor: Colors.white,
                       onPressed: () => Scrollable.ensureVisible(
                           widget.projectsKey.currentContext!,
@@ -82,9 +81,6 @@ class _IntroMobileState extends State<IntroMobile> {
                           duration: Duration(seconds: 1),
                           curve: Curves.ease),
                     )),
-                SizedBox(
-                  height: 30,
-                ),
               ],
             ),
           )

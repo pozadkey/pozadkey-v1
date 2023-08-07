@@ -47,17 +47,17 @@ class _FooterDesktopState extends State<FooterDesktop> {
                 Navigator.pushNamed(context, '/');
               },
               title: '© $formattedDate. Damilare Ajakaiye.',
-              initialColor: Colors.black,
-              hoverColorIn: Color.fromARGB(255, 2, 185, 130),
-              hoverColorOut: Colors.black),
+              initialColor: Color.fromRGBO(54, 54, 54, 1),
+              hoverColorIn: Color.fromRGBO(117, 117, 117, 1),
+              hoverColorOut: Color.fromRGBO(54, 54, 54, 1)),
           Row(
             children: [
               NavBarItems(
                   onPressed: () => openUrl('https://github.com/pozadkey'),
                   title: 'Github',
-                  initialColor: Colors.black,
-                  hoverColorIn: Color.fromARGB(255, 2, 185, 130),
-                  hoverColorOut: Colors.black),
+                  initialColor: Color.fromRGBO(54, 54, 54, 1),
+                  hoverColorIn: Color.fromRGBO(117, 117, 117, 1),
+                  hoverColorOut: Color.fromRGBO(54, 54, 54, 1)),
               SizedBox(
                 width: 10,
               ),
@@ -65,18 +65,18 @@ class _FooterDesktopState extends State<FooterDesktop> {
                   onPressed: () =>
                       openUrl('https://linkedin.com/in/damilare-ajakaiye'),
                   title: 'LinkedIn',
-                  initialColor: Colors.black,
-                  hoverColorIn: Color.fromARGB(255, 2, 185, 130),
-                  hoverColorOut: Colors.black),
+                  initialColor: Color.fromRGBO(54, 54, 54, 1),
+                  hoverColorIn: Color.fromRGBO(117, 117, 117, 1),
+                  hoverColorOut: Color.fromRGBO(54, 54, 54, 1)),
               SizedBox(
                 width: 10,
               ),
               NavBarItems(
                   onPressed: () => openUrl('https://twitter.com/pozadkey'),
                   title: 'Twitter',
-                  initialColor: Colors.black,
-                  hoverColorIn: Color.fromARGB(255, 2, 185, 130),
-                  hoverColorOut: Colors.black),
+                  initialColor: Color.fromRGBO(54, 54, 54, 1),
+                  hoverColorIn: Color.fromRGBO(117, 117, 117, 1),
+                  hoverColorOut: Color.fromRGBO(54, 54, 54, 1)),
             ],
           )
         ],

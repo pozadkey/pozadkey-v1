@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SecondaryIconButton extends StatefulWidget {
   final String title;
-
   Color bgColor;
   Color bgColorOut;
   Color titleColor;
@@ -37,7 +36,7 @@ class _SecondaryIconButtonState extends State<SecondaryIconButton> {
     final _buttonFont = TextStyle(
         fontSize: 13,
         color: widget.titleColor,
-        letterSpacing: 1.5,
+        letterSpacing: 0.2,
         fontWeight: FontWeight.w600);
 
     return MouseRegion(
@@ -56,18 +55,10 @@ class _SecondaryIconButtonState extends State<SecondaryIconButton> {
       child: TextButton(
         child: Padding(
           padding: width >= 800 ? EdgeInsets.all(10) : EdgeInsets.all(6),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                widget.title,
-                style: _buttonFont,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-            ],
+          child: Text(
+            widget.title,
+            style: _buttonFont,
+            textAlign: TextAlign.center,
           ),
         ),
         onPressed: () {
@@ -77,7 +68,7 @@ class _SecondaryIconButtonState extends State<SecondaryIconButton> {
           backgroundColor: widget.bgColor,
           side: BorderSide(color: widget.myColor, width: 2),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(3.0)),
         ),
       ),
     );

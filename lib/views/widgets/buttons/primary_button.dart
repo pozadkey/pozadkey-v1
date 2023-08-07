@@ -37,8 +37,8 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     final buttonFont = TextStyle(
         fontSize: 13,
         color: widget.initalTextColor,
-        letterSpacing: 1.5,
-        fontWeight: FontWeight.w700);
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.2);
 
     return MouseRegion(
       onEnter: (m) {
@@ -56,17 +56,10 @@ class _PrimaryButtonState extends State<PrimaryButton> {
       child: TextButton(
         child: Padding(
           padding: width >= 800 ? EdgeInsets.all(10) : EdgeInsets.all(6),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                widget.title,
-                style: buttonFont,
-              ),
-              SizedBox(
-                width: 7,
-              ),
-            ],
+          child: Text(
+            widget.title,
+            style: buttonFont,
+            textAlign: TextAlign.center,
           ),
         ),
         onPressed: () {
@@ -76,7 +69,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           backgroundColor: widget.initialBgColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-              5.0,
+              3.0,
             ),
           ),
         ),
