@@ -22,7 +22,7 @@ List<MobileProjectsModel> mobileProjectsList = [
       image: 'assets/images/oou-llb.JPG',
       info:
           'A yearbook application built for a university\'s law faculty.  Built for Android and iOS platforms, it displays hard-coded data about the faculty and its students.',
-      stack: 'Flutter',
+      stack: 'Dart Flutter',
       playstore:
           'https://play.google.com/store/apps/details?id=com.pozadkey.oou_llb_21',
       appstore: 'https://apps.apple.com/ng/app/oou-llb21/id1632992447',

@@ -104,7 +104,7 @@ class _ContactMobileState extends State<ContactMobile> {
                 iconColor: Color.fromRGBO(54, 54, 54, 1),
                 iconColorIn: Colors.white,
                 iconColorOut: Color.fromRGBO(54, 54, 54, 1),
-                icon: FontAwesomeIcons.twitter,
+                icon: FontAwesomeIcons.linkedinIn,
                 myColor: Color.fromRGBO(54, 54, 54, 1),
                 onPressed: () =>
                     openUrl('https://linkedin.com/in/damilare-ajakaiye'),

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:pozadkey/views/home_view/sections/projects_view/components/articles/articles.dart';
 import 'package:pozadkey/views/home_view/sections/projects_view/components/mobile_projects/mobile_projects.dart';
+import 'package:pozadkey/views/home_view/sections/projects_view/components/tools_page/tools_page.dart';
 import 'package:pozadkey/views/widgets/buttons/secondary_icon_button.dart';
 import 'components/web_projects/web_projects.dart';
 
@@ -22,10 +23,12 @@ class _ProjectsTabDesktopState extends State<ProjectsTabDesktop> {
   Widget webProj = WebProjects();
   Widget mobileProj = MobileProjects();
   Widget articleProj = Articles();
+  Widget toolsProj = ToolsPage();
 
   bool isWeb = true;
   bool isMobile = false;
   bool isArticle = false;
+  bool isTool = false;
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +86,7 @@ class _ProjectsTabDesktopState extends State<ProjectsTabDesktop> {
                       isWeb = true;
                       isMobile = false;
                       isArticle = false;
+                      isTool = false;
                     });
                   },
                 ),
@@ -114,6 +118,39 @@ class _ProjectsTabDesktopState extends State<ProjectsTabDesktop> {
                       isWeb = false;
                       isMobile = true;
                       isArticle = false;
+                      isTool = false;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              SizedBox(
+                width: 98,
+                child: SecondaryIconButton(
+                  title: 'Tools',
+                  bgColor: isTool == true
+                      ? Color.fromRGBO(54, 54, 54, 1)
+                      : Colors.transparent,
+                  bgColorOut: isTool == true
+                      ? Color.fromRGBO(54, 54, 54, 1)
+                      : Colors.transparent,
+                  titleColor: isTool == true
+                      ? Colors.white
+                      : Color.fromRGBO(54, 54, 54, 1),
+                  titleColorIn: Colors.white,
+                  titleColorOut: isTool == true
+                      ? Colors.white
+                      : Color.fromRGBO(54, 54, 54, 1),
+                  myColor: Color.fromRGBO(54, 54, 54, 1),
+                  onPressed: () {
+                    setState(() {
+                      defaultProj = toolsProj;
+                      isWeb = false;
+                      isMobile = false;
+                      isArticle = false;
+                      isTool = true;
                     });
                   },
                 ),
@@ -145,6 +182,7 @@ class _ProjectsTabDesktopState extends State<ProjectsTabDesktop> {
                       isWeb = false;
                       isMobile = false;
                       isArticle = true;
+                      isTool = false;
                     });
                   },
                 ),

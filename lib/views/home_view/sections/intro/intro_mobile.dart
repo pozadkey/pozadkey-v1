@@ -46,7 +46,7 @@ class _IntroMobileState extends State<IntroMobile> {
                 SizedBox(
                     width: 700,
                     child: Text(
-                      'Flutter & Backend\nEngineer',
+                      'Web & Mobile\nEngineer',
                       style: headerFont,
                       textAlign: TextAlign.center,
                     )),
